@@ -7,17 +7,21 @@ TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 CACHE_FILE = "stock_state.json"
 
-# All product catalog URLs
+# Key Collection & Category URLs on HMT
 HMT_IN_URLS = [
     "https://hmtwatches.in/watches",
     "https://hmtwatches.in/mens",
-    "https://hmtwatches.in/womens"
+    "https://hmtwatches.in/shop_type?type=shop_type&id=8",   # Mechanical
+    "https://hmtwatches.in/shop_type?type=shop_type&id=9",   # Automatic
+    "https://hmtwatches.in/shop_type?type=shop_type&id=10",  # Quartz (Sangam, Tareeq, etc.)
+    "https://hmtwatches.in/collections?type=collection&id=58" # Featured Collections
 ]
 
 HMT_STORE_URL = "https://www.hmtwatches.store/all-products"
 
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0 Safari/537.36"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
 }
 
 def send_telegram_alert(message: str):
@@ -47,22 +51,26 @@ def scrape_hmt_in():
             if res.status_code != 200:
                 continue
             soup = BeautifulSoup(res.text, "html.parser")
-            cards = soup.find_all("div", class_="product-grid") or soup.find_all("div", class_="product-box")
+            cards = soup.find_all("div", class_="product-grid") or soup.find_all("div", class_="product-box") or soup.find_all("div", class_="pro-box")
             
             for card in cards:
                 title_elem = card.find("a") or card.find("h3") or card.find("h4")
                 if not title_elem:
                     continue
                 title = title_elem.get_text(strip=True)
+                if not title or len(title) < 3:
+                    continue
+
                 link = title_elem.get("href", url)
                 if link and not link.startswith("http"):
                     link = f"https://hmtwatches.in/{link.lstrip('/')}"
                 
                 card_text = card.get_text().lower()
                 is_in_stock = "out of stock" not in card_text and "sold out" not in card_text and "coming soon" not in card_text
+                
                 catalog[f"[hmtwatches.in] {title}"] = {"in_stock": is_in_stock, "link": link}
         except Exception as e:
-            print(f"Error scraping hmtwatches.in: {e}")
+            print(f"Error scraping {url}: {e}")
     return catalog
 
 def scrape_hmt_store():
@@ -93,7 +101,6 @@ def scrape_hmt_store():
 
 def run_check():
     previous = load_previous_stock()
-    
     current = {}
     current.update(scrape_hmt_in())
     current.update(scrape_hmt_store())
@@ -107,9 +114,6 @@ def run_check():
         is_now_in_stock = info["in_stock"]
         was_in_stock = prev_info["in_stock"] if prev_info else False
 
-        # Alert if:
-        # 1. It's a completely new watch listing that is in stock
-        # 2. An existing watch restocked (was out of stock, now in stock)
         is_new_watch = prev_info is None and is_now_in_stock
         is_restocked = was_in_stock is False and is_now_in_stock
 
