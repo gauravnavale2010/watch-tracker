@@ -1,8 +1,9 @@
 name: HMT Watch Restock Tracker
 
-  on:
+on:
   schedule:
     - cron: '*/2 * * * *'  # Runs every 2 minutes
+  workflow_dispatch:      # Allows manual triggers
 
 jobs:
   check-stock:
@@ -15,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12'
 
       - name: Install Dependencies
         run: |
