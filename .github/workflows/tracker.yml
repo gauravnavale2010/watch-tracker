@@ -1,9 +1,8 @@
 name: HMT Watch Restock Tracker
 
-on:
+  on:
   schedule:
-    - cron: '*/5 * * * *'  # Runs every 5 minutes automatically
-  workflow_dispatch:      # Allows manual testing
+    - cron: '*/2 * * * *'  # Runs every 2 minutes
 
 jobs:
   check-stock:
