@@ -7,22 +7,26 @@ TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 CACHE_FILE = "stock_state.json"
 
-# Key Collection & Category URLs on HMT
+# Key HMT URLs
 HMT_IN_URLS = [
     "https://hmtwatches.in/watches",
-    "https://hmtwatches.in/mens",
     "https://hmtwatches.in/shop_type?type=shop_type&id=8",   # Mechanical
     "https://hmtwatches.in/shop_type?type=shop_type&id=9",   # Automatic
-    "https://hmtwatches.in/shop_type?type=shop_type&id=10",  # Quartz (Sangam, Tareeq, etc.)
-    "https://hmtwatches.in/collections?type=collection&id=58" # Featured Collections
+    "https://hmtwatches.in/shop_type?type=shop_type&id=10"   # Quartz
 ]
 
 HMT_STORE_URL = "https://www.hmtwatches.store/all-products"
 
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0 Safari/537.36",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-}
+def get_session():
+    session = requests.Session()
+    session.headers.update({
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache"
+    })
+    return session
 
 def send_telegram_alert(message: str):
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
@@ -43,12 +47,13 @@ def save_current_stock(stock_data: dict):
     with open(CACHE_FILE, "w") as f:
         json.dump(stock_data, f, indent=2)
 
-def scrape_hmt_in():
+def scrape_hmt_in(session):
     catalog = {}
     for url in HMT_IN_URLS:
         try:
-            res = requests.get(url, headers=HEADERS, timeout=15)
+            res = session.get(url, timeout=15)
             if res.status_code != 200:
+                print(f"Failed to fetch {url}: Status {res.status_code}")
                 continue
             soup = BeautifulSoup(res.text, "html.parser")
             cards = soup.find_all("div", class_="product-grid") or soup.find_all("div", class_="product-box") or soup.find_all("div", class_="pro-box")
@@ -73,10 +78,10 @@ def scrape_hmt_in():
             print(f"Error scraping {url}: {e}")
     return catalog
 
-def scrape_hmt_store():
+def scrape_hmt_store(session):
     catalog = {}
     try:
-        res = requests.get(HMT_STORE_URL, headers=HEADERS, timeout=15)
+        res = session.get(HMT_STORE_URL, timeout=15)
         if res.status_code == 200:
             soup = BeautifulSoup(res.text, "html.parser")
             cards = soup.find_all("div", class_="product-card") or soup.find_all("a", href=True)
@@ -100,13 +105,17 @@ def scrape_hmt_store():
     return catalog
 
 def run_check():
+    session = get_session()
     previous = load_previous_stock()
+    
     current = {}
-    current.update(scrape_hmt_in())
-    current.update(scrape_hmt_store())
+    current.update(scrape_hmt_in(session))
+    current.update(scrape_hmt_store(session))
+
+    print(f"Total watches scraped: {len(current)}")
 
     if not current:
-        print("No watches scraped.")
+        print("No watches scraped. Site might be blocking requests.")
         return
 
     for watch, info in current.items():
@@ -130,5 +139,4 @@ def run_check():
     save_current_stock(current)
 
 if __name__ == "__main__":
-    
-    run_check(send_telegram_alert("🧪 Test alert: Your Telegram Bot is connected successfully!"))
+    run_check()
