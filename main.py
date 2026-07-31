@@ -130,4 +130,5 @@ def run_check():
     save_current_stock(current)
 
 if __name__ == "__main__":
-    run_check()
+    
+    run_check(send_telegram_alert("🧪 Test alert: Your Telegram Bot is connected successfully!"))
