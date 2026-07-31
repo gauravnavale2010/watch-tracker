@@ -2,8 +2,12 @@ name: HMT Watch Restock Tracker
 
 on:
   schedule:
-    - cron: '*/2 * * * *'  # Runs every 2 minutes
-  workflow_dispatch:      # Allows manual triggers
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+# Grant explicit write permissions to commit changes
+permissions:
+  contents: write
 
 jobs:
   check-stock:
