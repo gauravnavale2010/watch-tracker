@@ -139,4 +139,4 @@ def run_check():
     save_current_stock(current)
 
 if __name__ == "__main__":
-    run_check(send_telegram_alert("🧪 <b>Test Alert:</b> Everything is working end-to-end!"))
+    run_check()
