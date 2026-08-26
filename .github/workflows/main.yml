@@ -1,0 +1,141 @@
+name: HMT Store Diagnostic
+
+on:
+  workflow_dispatch:
+
+jobs:
+  debug-store:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4
+
+      - name: Inspect HMT Store
+        run: |
+          python - <<'PY'
+          import requests
+          from bs4 import BeautifulSoup
+
+          url = "https://www.hmtwatches.store/collections/all"
+
+          headers = {
+              "User-Agent": (
+                  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                  "AppleWebKit/537.36 (KHTML, like Gecko) "
+                  "Chrome/120.0.0.0 Safari/537.36"
+              ),
+              "Accept": (
+                  "text/html,application/xhtml+xml,"
+                  "application/xml;q=0.9,image/webp,*/*;q=0.8"
+              ),
+              "Accept-Language": "en-US,en;q=0.9",
+          }
+
+          print("=" * 70)
+          print("HMT STORE DIAGNOSTIC")
+          print("=" * 70)
+
+          response = requests.get(
+              url,
+              headers=headers,
+              timeout=30,
+              allow_redirects=True
+          )
+
+          print("STATUS:", response.status_code)
+          print("FINAL URL:", response.url)
+          print("HTML LENGTH:", len(response.text))
+
+          print("\nRESPONSE HEAD:")
+          print(response.text[:2000])
+
+          soup = BeautifulSoup(response.text, "html.parser")
+
+          print("\nPAGE TITLE:")
+          print(
+              soup.title.get_text(strip=True)
+              if soup.title
+              else "NO TITLE"
+          )
+
+          print("\nALL LINKS CONTAINING PRODUCT:")
+          print("=" * 70)
+
+          found = 0
+
+          for a in soup.find_all("a", href=True):
+
+              href = a.get("href", "").strip()
+              text = " ".join(
+                  a.get_text(" ", strip=True).split()
+              )
+
+              if "product" in href.lower():
+
+                  print(
+                      f"TEXT: {text[:120]}\n"
+                      f"HREF: {href}\n"
+                      + "-" * 70
+                  )
+
+                  found += 1
+
+          print(
+              "\nPRODUCT LINKS FOUND:",
+              found
+          )
+
+          print("\nFIRST 50 LINKS:")
+          print("=" * 70)
+
+          count = 0
+
+          for a in soup.find_all("a", href=True):
+
+              href = a.get("href", "").strip()
+              text = " ".join(
+                  a.get_text(" ", strip=True).split()
+              )
+
+              if href:
+
+                  print(
+                      f"{count + 1}. "
+                      f"{text[:100]} --> {href}"
+                  )
+
+                  count += 1
+
+                  if count >= 50:
+                      break
+
+          print("\nPRODUCT-LIKE HTML:")
+          print("=" * 70)
+
+          keywords = [
+              "product",
+              "shopify",
+              "collection",
+              "price",
+              "add to cart",
+              "sold out"
+          ]
+
+          html_lower = response.text.lower()
+
+          for keyword in keywords:
+              print(
+                  f"{keyword}:",
+                  keyword in html_lower
+              )
+
+          print("\nEND DIAGNOSTIC")
+          print("=" * 70)
+          PY
