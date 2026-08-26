@@ -1,4 +1,24 @@
 {
+  "store:featured_products_1~detrl8tilp": {
+    "title": "Top Picks",
+    "price": {
+      "id": "slot31744108665666837-priceblock",
+      "name": "Price",
+      "type": "PRICE_BLOCK",
+      "widgetClass": "NON_PRIMITIVE",
+      "className": "",
+      "styles": {
+        "priceSize": "Large",
+        "fontWeight": "bold"
+      }
+    },
+    "available": false,
+    "quantity": null,
+    "source": "HMT Store",
+    "image_url": "",
+    "buy_url": "https://www.hmtwatches.store/collections/all",
+    "series": "General"
+  },
   "store:9adac6eb-f497-4c5b-a576-a5899b548f4a": {
     "title": "HMT Chronograph FGSS 12",
     "price": "8552",
