@@ -38,6 +38,8 @@ HEADERS = {
     ),
     "Accept-Language": "en-IN,en;q=0.9",
     "Cache-Control": "no-cache",
+    "Pragma": "no-cache",
+    "Referer": "https://www.hmtwatches.in/",
 }
 
 TIMEOUT = 30
@@ -80,12 +82,13 @@ def normalize_url(url):
         parsed = parsed._replace(fragment="")
 
         return parsed.geturl()
+
     except Exception:
         return str(url).strip()
 
 
 # ============================================================
-# PRODUCT VALIDATION
+# PRODUCT NAME VALIDATION
 # ============================================================
 
 BAD_NAMES = {
@@ -100,6 +103,8 @@ BAD_NAMES = {
     "add to cart",
     "shop now",
     "top picks",
+
+    # HMT Store frontend objects
     "navigation",
     "logo settings",
     "desktop title styles",
@@ -151,13 +156,6 @@ BAD_NAMES = {
 
 
 def looks_like_hmt_watch_name(name):
-    """
-    Strict validation.
-
-    We want actual HMT watch names and NOT frontend
-    configuration/content objects.
-    """
-
     name = clean_text(name)
 
     if not name:
@@ -171,7 +169,6 @@ def looks_like_hmt_watch_name(name):
     if len(name) < 5 or len(name) > 180:
         return False
 
-    # Obvious frontend/configuration names
     blocked_terms = [
         "navigation",
         "settings",
@@ -198,7 +195,7 @@ def looks_like_hmt_watch_name(name):
     if any(term in lower for term in blocked_terms):
         return False
 
-    # A real HMT watch normally contains HMT or a known HMT series.
+    # Galaxy and INOX intentionally included.
     watch_terms = [
         "hmt",
         "galaxy",
@@ -222,12 +219,26 @@ def looks_like_hmt_watch_name(name):
         "automatic",
         "quartz",
         "mechanical",
+        "utsav",
+        "sona",
+        "swarna",
+        "kapila",
+        "kajal",
+        "kedar",
+        "himalaya",
+        "kailash",
+        "commando",
+        "vivek",
+        "jawan",
+        "bahadur",
+        "rajat",
+        "sourab",
+        "sougandh",
+        "skeleton",
+        "operation sindoor",
     ]
 
-    if any(term in lower for term in watch_terms):
-        return True
-
-    return False
+    return any(term in lower for term in watch_terms)
 
 
 # ============================================================
@@ -251,7 +262,9 @@ def parse_price(text):
 
         if match:
             try:
-                return float(match.group(1).replace(",", ""))
+                return float(
+                    match.group(1).replace(",", "")
+                )
             except Exception:
                 pass
 
@@ -263,11 +276,6 @@ def parse_price(text):
 # ============================================================
 
 def parse_quantity(text):
-    """
-    Only returns a quantity when the website explicitly exposes it.
-    We never guess inventory.
-    """
-
     if not text:
         return None
 
@@ -278,7 +286,7 @@ def parse_quantity(text):
         r"(\d+)\s+(?:units?|pieces?)\s+(?:left|remaining)",
         r"(?:available\s+quantity|quantity\s+available)\s*[:\-]?\s*(\d+)",
         r"(?:stock|inventory)\s*[:\-]?\s*(\d+)",
-        r"(?:quantity)\s*[:\-]?\s*(\d+)",
+        r"quantity\s*[:\-]?\s*(\d+)",
     ]
 
     for pattern in patterns:
@@ -309,7 +317,7 @@ def detect_stock(text):
 
     text = clean_text(text).lower()
 
-    # Check negative status FIRST.
+    # Negative status MUST be checked first.
     out_patterns = [
         "out of stock",
         "sold out",
@@ -343,12 +351,13 @@ def detect_stock(text):
 # ============================================================
 
 def send_telegram(message):
+
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         print("Telegram credentials not configured.")
         return False
 
     url = (
-        f"https://api.telegram.org/bot"
+        "https://api.telegram.org/bot"
         f"{TELEGRAM_BOT_TOKEN}/sendMessage"
     )
 
@@ -359,6 +368,7 @@ def send_telegram(message):
     }
 
     try:
+
         response = requests.post(
             url,
             json=payload,
@@ -376,16 +386,21 @@ def send_telegram(message):
         )
 
     except Exception as e:
-        print("Telegram exception:", e)
+
+        print(
+            "Telegram exception:",
+            e,
+        )
 
     return False
 
 
 # ============================================================
-# HMT STORE - JSON EXTRACTION
+# HMT STORE
 # ============================================================
 
 def get_value_case_insensitive(obj, candidates):
+
     if not isinstance(obj, dict):
         return None
 
@@ -395,13 +410,17 @@ def get_value_case_insensitive(obj, candidates):
     }
 
     for candidate in candidates:
+
         if candidate.lower() in lower_keys:
-            return obj[lower_keys[candidate.lower()]]
+            return obj[
+                lower_keys[candidate.lower()]
+            ]
 
     return None
 
 
 def extract_product_url(obj):
+
     candidates = [
         "url",
         "producturl",
@@ -419,6 +438,7 @@ def extract_product_url(obj):
     )
 
     if isinstance(value, dict):
+
         value = (
             value.get("url")
             or value.get("href")
@@ -435,6 +455,7 @@ def extract_product_url(obj):
 
 
 def extract_product_price(obj):
+
     candidates = [
         "price",
         "saleprice",
@@ -459,18 +480,26 @@ def extract_product_price(obj):
         return parse_price(value)
 
     if isinstance(value, dict):
+
         for key in [
             "amount",
             "value",
             "price",
         ]:
+
             nested = value.get(key)
 
-            if isinstance(nested, (int, float)):
+            if isinstance(
+                nested,
+                (int, float),
+            ):
                 return float(nested)
 
             if isinstance(nested, str):
-                result = parse_price(nested)
+
+                result = parse_price(
+                    nested
+                )
 
                 if result is not None:
                     return result
@@ -479,6 +508,7 @@ def extract_product_price(obj):
 
 
 def extract_product_stock(obj):
+
     parts = []
 
     if not isinstance(obj, dict):
@@ -498,6 +528,7 @@ def extract_product_stock(obj):
                 "availability",
             ]
         ):
+
             parts.append(str(value))
 
     stock_text = " ".join(parts)
@@ -509,15 +540,6 @@ def extract_product_stock(obj):
 
 
 def recursive_product_objects(obj, found):
-    """
-    IMPORTANT:
-    We no longer treat every object with 'name' or 'title'
-    as a product.
-
-    A candidate must have:
-      1. A watch-like name
-      2. A product-looking URL/handle OR price/stock information
-    """
 
     if isinstance(obj, dict):
 
@@ -534,6 +556,7 @@ def recursive_product_objects(obj, found):
         )
 
         if isinstance(name, str):
+
             name = clean_text(name)
 
             if looks_like_hmt_watch_name(name):
@@ -542,14 +565,6 @@ def recursive_product_objects(obj, found):
                 price = extract_product_price(obj)
                 stock, quantity = extract_product_stock(obj)
 
-                # Strong requirement:
-                # Do not accept arbitrary frontend objects.
-                #
-                # A product should have either:
-                # - product-looking URL
-                # - price
-                # - stock/availability data
-                #
                 if (
                     product_url
                     or price is not None
@@ -557,12 +572,11 @@ def recursive_product_objects(obj, found):
                     or quantity is not None
                 ):
 
-                    # Reject obviously non-product URLs
                     lower_url = product_url.lower()
 
                     if (
-                        not product_url
-                        or any(
+                        not lower_url
+                        or not any(
                             bad in lower_url
                             for bad in [
                                 "/settings",
@@ -570,23 +584,22 @@ def recursive_product_objects(obj, found):
                                 "/cart",
                                 "/account",
                                 "/blog",
-                                "/collections/",
                             ]
                         )
                     ):
-                        # If there is no URL, price/stock is enough.
-                        if product_url:
-                            pass
 
-                    found.append({
-                        "name": name,
-                        "url": normalize_url(product_url),
-                        "price": price,
-                        "stock": stock,
-                        "quantity": quantity,
-                    })
+                        found.append({
+                            "name": name,
+                            "url": normalize_url(
+                                product_url
+                            ),
+                            "price": price,
+                            "stock": stock,
+                            "quantity": quantity,
+                        })
 
         for value in obj.values():
+
             recursive_product_objects(
                 value,
                 found,
@@ -595,6 +608,7 @@ def recursive_product_objects(obj, found):
     elif isinstance(obj, list):
 
         for item in obj:
+
             recursive_product_objects(
                 item,
                 found,
@@ -602,13 +616,20 @@ def recursive_product_objects(obj, found):
 
 
 def extract_json_scripts(soup):
+
     results = []
 
     for script in soup.find_all("script"):
 
-        script_type = script.get("type", "")
+        script_type = script.get(
+            "type",
+            "",
+        )
 
-        text = script.string or script.get_text()
+        text = (
+            script.string
+            or script.get_text()
+        )
 
         if not text:
             continue
@@ -623,23 +644,25 @@ def extract_json_scripts(soup):
             continue
 
         try:
-            data = json.loads(text)
-            results.append(data)
+
+            results.append(
+                json.loads(text)
+            )
+
         except Exception:
             continue
 
     return results
 
 
-# ============================================================
-# HMT STORE - HTML PRODUCT CARDS
-# ============================================================
-
 def extract_store_cards(soup):
+
     products = []
 
-    # Look for actual product-looking anchors first.
-    for a in soup.find_all("a", href=True):
+    for a in soup.find_all(
+        "a",
+        href=True,
+    ):
 
         href = absolute_url(
             HMT_STORE_URL,
@@ -649,17 +672,9 @@ def extract_store_cards(soup):
         if not href:
             continue
 
-        href_lower = href.lower()
-
-        # The current HMT Store is NOT Shopify.
-        # We therefore don't require "/products/".
-        #
-        # But we do require that the anchor/container
-        # actually looks like a watch product.
-
         container = a
 
-        for _ in range(4):
+        for _ in range(5):
 
             if container.parent:
                 container = container.parent
@@ -679,8 +694,7 @@ def extract_store_cards(soup):
             if price is None:
                 continue
 
-            # Find title candidates inside card.
-            names = []
+            candidates = []
 
             link_text = clean_text(
                 a.get_text(
@@ -690,12 +704,21 @@ def extract_store_cards(soup):
             )
 
             if link_text:
-                names.append(link_text)
+                candidates.append(
+                    link_text
+                )
 
             for element in container.find_all(
-                ["h1", "h2", "h3", "h4", "strong"],
-                limit=20,
+                [
+                    "h1",
+                    "h2",
+                    "h3",
+                    "h4",
+                    "strong",
+                ],
+                limit=30,
             ):
+
                 candidate = clean_text(
                     element.get_text(
                         " ",
@@ -704,12 +727,18 @@ def extract_store_cards(soup):
                 )
 
                 if candidate:
-                    names.append(candidate)
+                    candidates.append(
+                        candidate
+                    )
 
             product_name = ""
 
-            for candidate in names:
-                if looks_like_hmt_watch_name(candidate):
+            for candidate in candidates:
+
+                if looks_like_hmt_watch_name(
+                    candidate
+                ):
+
                     product_name = candidate
                     break
 
@@ -728,10 +757,6 @@ def extract_store_cards(soup):
 
     return products
 
-
-# ============================================================
-# HMT STORE
-# ============================================================
 
 def scrape_hmt_store():
 
@@ -762,33 +787,20 @@ def scrape_hmt_store():
 
         products = []
 
-        # ----------------------------------------------------
-        # 1. JSON / React / Next data
-        # ----------------------------------------------------
-
-        json_products = []
-
+        # JSON
         for data in extract_json_scripts(soup):
 
             recursive_product_objects(
                 data,
-                json_products,
+                products,
             )
 
-        products.extend(json_products)
-
-        # ----------------------------------------------------
-        # 2. HTML cards
-        # ----------------------------------------------------
-
+        # HTML
         products.extend(
             extract_store_cards(soup)
         )
 
-        # ----------------------------------------------------
-        # DEDUPLICATE
-        # ----------------------------------------------------
-
+        # Deduplicate
         unique = {}
 
         for product in products:
@@ -801,10 +813,11 @@ def scrape_hmt_store():
                 product.get("url")
             )
 
-            if not looks_like_hmt_watch_name(name):
+            if not looks_like_hmt_watch_name(
+                name
+            ):
                 continue
 
-            # Prefer URL as identity.
             if url:
                 key = url
             else:
@@ -820,7 +833,9 @@ def scrape_hmt_store():
 
                 unique[key] = product
 
-        products = list(unique.values())
+        products = list(
+            unique.values()
+        )
 
         print(
             "HMT Store candidate products:",
@@ -848,10 +863,7 @@ def scrape_hmt_store():
 # HMT.IN
 # ============================================================
 
-def extract_hmt_in_listing_products(
-    html,
-    source_url,
-):
+def extract_hmt_in_products(html, source_url):
 
     soup = BeautifulSoup(
         html,
@@ -860,12 +872,19 @@ def extract_hmt_in_listing_products(
 
     products = []
 
-    for a in soup.find_all(
-        "a",
-        href=True,
+    # --------------------------------------------------------
+    # STRATEGY 1
+    #
+    # Find every product_details URL.
+    # --------------------------------------------------------
+
+    detail_links = []
+
+    for tag in soup.find_all(
+        href=True
     ):
 
-        href = a.get("href")
+        href = tag.get("href")
 
         if not href:
             continue
@@ -875,19 +894,47 @@ def extract_hmt_in_listing_products(
             href,
         )
 
-        lower_url = full_url.lower()
+        if "product_details" in full_url.lower():
 
-        # HMT.in product detail URLs observed
-        # by the diagnostic.
-        if "product_details" not in lower_url:
+            detail_links.append(
+                (
+                    tag,
+                    normalize_url(full_url),
+                )
+            )
+
+    print(
+        f"  Detail links discovered: "
+        f"{len(detail_links)}"
+    )
+
+    seen = set()
+
+    # --------------------------------------------------------
+    # STRATEGY 2
+    #
+    # For every product link, search nearby HTML for:
+    #
+    # - product name
+    # - price
+    # - stock
+    #
+    # This is deliberately tolerant of HMT's changing markup.
+    # --------------------------------------------------------
+
+    for link, full_url in detail_links:
+
+        if full_url in seen:
             continue
 
-        container = a
+        seen.add(full_url)
 
         best_name = ""
+        best_text = ""
 
-        # Search upward for the actual product card.
-        for _ in range(6):
+        container = link
+
+        for level in range(8):
 
             if container.parent:
                 container = container.parent
@@ -899,23 +946,28 @@ def extract_hmt_in_listing_products(
                 )
             )
 
-            if len(text) > 1500:
+            if not text:
+                continue
+
+            if len(text) > 1800:
                 continue
 
             candidates = []
 
             # Anchor text
             anchor_text = clean_text(
-                a.get_text(
+                link.get_text(
                     " ",
                     strip=True,
                 )
             )
 
             if anchor_text:
-                candidates.append(anchor_text)
+                candidates.append(
+                    anchor_text
+                )
 
-            # Heading/title candidates
+            # Headings
             for child in container.find_all(
                 [
                     "h1",
@@ -937,12 +989,17 @@ def extract_hmt_in_listing_products(
                 )
 
                 if candidate:
-                    candidates.append(candidate)
+                    candidates.append(
+                        candidate
+                    )
 
-            # Span/div candidates, but only a limited number.
+            # Short spans/divs
             for child in container.find_all(
-                ["span", "div"],
-                limit=50,
+                [
+                    "span",
+                    "div",
+                ],
+                limit=80,
             ):
 
                 candidate = clean_text(
@@ -954,42 +1011,198 @@ def extract_hmt_in_listing_products(
 
                 if (
                     5 <= len(candidate) <= 120
-                    and looks_like_hmt_watch_name(
+                ):
+                    candidates.append(
                         candidate
                     )
-                ):
-                    candidates.append(candidate)
 
             for candidate in candidates:
 
                 if looks_like_hmt_watch_name(
                     candidate
                 ):
+
                     best_name = candidate
                     break
 
             if best_name:
+
+                best_text = text
                 break
 
         if not best_name:
             continue
 
-        card_text = clean_text(
-            container.get_text(
-                " ",
-                strip=True,
-            )
-        )
-
         products.append({
             "name": best_name,
-            "url": normalize_url(full_url),
-            "price": parse_price(card_text),
-            "stock": detect_stock(card_text),
-            "quantity": parse_quantity(card_text),
+            "url": full_url,
+            "price": parse_price(best_text),
+            "stock": detect_stock(best_text),
+            "quantity": parse_quantity(best_text),
         })
 
-    return products
+    # --------------------------------------------------------
+    # STRATEGY 3
+    #
+    # If the current server response does NOT expose product
+    # links, parse product-looking cards directly.
+    #
+    # This is important because HMT.in has recently changed
+    # how its listing HTML is delivered.
+    # --------------------------------------------------------
+
+    if not products:
+
+        print(
+            "  No detail links produced products."
+        )
+
+        print(
+            "  Trying listing-card fallback..."
+        )
+
+        all_text_blocks = soup.find_all(
+            [
+                "article",
+                "li",
+                "div",
+                "td",
+            ]
+        )
+
+        for block in all_text_blocks:
+
+            text = clean_text(
+                block.get_text(
+                    " ",
+                    strip=True,
+                )
+            )
+
+            if not text:
+                continue
+
+            if len(text) > 700:
+                continue
+
+            price = parse_price(text)
+
+            if price is None:
+                continue
+
+            # Find likely watch name.
+            name = ""
+
+            candidates = []
+
+            for child in block.find_all(
+                [
+                    "h1",
+                    "h2",
+                    "h3",
+                    "h4",
+                    "h5",
+                    "strong",
+                    "b",
+                    "span",
+                    "a",
+                ],
+                limit=40,
+            ):
+
+                candidate = clean_text(
+                    child.get_text(
+                        " ",
+                        strip=True,
+                    )
+                )
+
+                if candidate:
+                    candidates.append(
+                        candidate
+                    )
+
+            for candidate in candidates:
+
+                if looks_like_hmt_watch_name(
+                    candidate
+                ):
+
+                    name = candidate
+                    break
+
+            if not name:
+                continue
+
+            # Try to find a product_details URL
+            # inside this card.
+            product_url = ""
+
+            for a in block.find_all(
+                "a",
+                href=True,
+            ):
+
+                href = absolute_url(
+                    source_url,
+                    a.get("href"),
+                )
+
+                if "product_details" in href.lower():
+
+                    product_url = normalize_url(
+                        href
+                    )
+
+                    break
+
+            if not product_url:
+                continue
+
+            products.append({
+                "name": name,
+                "url": product_url,
+                "price": price,
+                "stock": detect_stock(text),
+                "quantity": parse_quantity(text),
+            })
+
+    # --------------------------------------------------------
+    # Deduplicate
+    # --------------------------------------------------------
+
+    unique = {}
+
+    for product in products:
+
+        name = clean_text(
+            product.get("name")
+        )
+
+        url = normalize_url(
+            product.get("url")
+        )
+
+        if not looks_like_hmt_watch_name(
+            name
+        ):
+            continue
+
+        if not url:
+            continue
+
+        key = url
+
+        if key not in unique:
+
+            product["name"] = name
+            product["url"] = url
+
+            unique[key] = product
+
+    return list(
+        unique.values()
+    )
 
 
 def scrape_hmt_in():
@@ -1019,9 +1232,14 @@ def scrape_hmt_in():
             if response.status_code != 200:
                 continue
 
-            products = extract_hmt_in_listing_products(
+            products = extract_hmt_in_products(
                 response.text,
                 url,
+            )
+
+            print(
+                f"  Products extracted from page: "
+                f"{len(products)}"
             )
 
             for product in products:
@@ -1037,9 +1255,13 @@ def scrape_hmt_in():
                 if product_url in seen_urls:
                     continue
 
-                seen_urls.add(product_url)
+                seen_urls.add(
+                    product_url
+                )
 
-                all_products.append(product)
+                all_products.append(
+                    product
+                )
 
             time.sleep(0.5)
 
@@ -1285,29 +1507,21 @@ def main():
     )
 
     # --------------------------------------------------------
-    # IMPORTANT SAFETY CHECK
-    # --------------------------------------------------------
-    #
-    # We monitor TWO independent websites.
-    #
-    # If one website suddenly returns zero products,
-    # DO NOT throw away the previous state for that site.
-    #
-    # This prevents temporary scraper failures from causing
-    # false "new product" alerts later.
+    # SAFETY
     # --------------------------------------------------------
 
     if len(store_products) == 0:
+
         print(
             "WARNING: HMT Store returned ZERO products."
         )
 
     if len(hmt_products) == 0:
+
         print(
             "WARNING: HMT.in returned ZERO products."
         )
 
-    # If BOTH failed, absolutely do not overwrite state.
     if (
         len(store_products) == 0
         and len(hmt_products) == 0
@@ -1343,7 +1557,9 @@ def main():
 
     for product in products:
 
-        key = product_key(product)
+        key = product_key(
+            product
+        )
 
         if not key:
             continue
@@ -1358,9 +1574,11 @@ def main():
     )
 
     if not current_state:
+
         print(
             "WARNING: No valid products."
         )
+
         return
 
     # --------------------------------------------------------
@@ -1405,7 +1623,7 @@ def main():
         )
 
         print(
-            "Quantity changes: 0"
+            "Quantity increases: 0"
         )
 
         print(
@@ -1426,7 +1644,7 @@ def main():
     # --------------------------------------------------------
 
     restocks = []
-    quantity_changes = []
+    quantity_increases = []
     new_products = []
 
     for key, current in current_state.items():
@@ -1460,9 +1678,7 @@ def main():
                 current
             )
 
-            # We DO NOT send a Telegram alert here.
-            # New baseline products should not spam Telegram.
-
+            # No alert for new products.
             continue
 
         old_stock = previous.get(
@@ -1502,14 +1718,6 @@ def main():
         # ----------------------------------------------------
         # QUANTITY INCREASE
         # ----------------------------------------------------
-        #
-        # Only alert when quantity INCREASES.
-        #
-        # Example:
-        # 2 -> 5 = alert
-        # 5 -> 2 = don't alert
-        # 5 -> 5 = nothing
-        # ----------------------------------------------------
 
         if (
             old_quantity is not None
@@ -1522,7 +1730,7 @@ def main():
                 f"{old_quantity} -> {new_quantity}"
             )
 
-            quantity_changes.append(
+            quantity_increases.append(
                 (
                     previous,
                     current,
@@ -1530,7 +1738,7 @@ def main():
             )
 
     # --------------------------------------------------------
-    # SAVE
+    # SAVE STATE
     # --------------------------------------------------------
 
     save_state(
@@ -1559,7 +1767,7 @@ def main():
     # TELEGRAM QUANTITY ALERTS
     # --------------------------------------------------------
 
-    for previous, current in quantity_changes:
+    for previous, current in quantity_increases:
 
         message = format_product(
             current
@@ -1606,7 +1814,7 @@ def main():
 
     print(
         "Quantity increases:",
-        len(quantity_changes),
+        len(quantity_increases),
     )
 
     print(
