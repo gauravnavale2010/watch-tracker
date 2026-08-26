@@ -11,17 +11,17 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: "3.12"
 
       - name: Install dependencies
         run: |
           pip install requests beautifulsoup4
 
-      - name: Inspect HMT Store
+      - name: Find HMT Store Product Data
         run: |
           python - <<'PY'
           import requests
-          from bs4 import BeautifulSoup
+          import re
 
           url = "https://www.hmtwatches.store/collections/all"
 
@@ -36,106 +36,306 @@ jobs:
                   "application/xml;q=0.9,image/webp,*/*;q=0.8"
               ),
               "Accept-Language": "en-US,en;q=0.9",
+              "Cache-Control": "no-cache",
           }
 
           print("=" * 70)
-          print("HMT STORE DIAGNOSTIC")
+          print("HMT STORE DATA DIAGNOSTIC")
           print("=" * 70)
 
-          response = requests.get(
-              url,
-              headers=headers,
-              timeout=30,
-              allow_redirects=True
-          )
-
-          print("STATUS:", response.status_code)
-          print("FINAL URL:", response.url)
-          print("HTML LENGTH:", len(response.text))
-
-          print("\nRESPONSE HEAD:")
-          print(response.text[:2000])
-
-          soup = BeautifulSoup(response.text, "html.parser")
-
-          print("\nPAGE TITLE:")
-          print(
-              soup.title.get_text(strip=True)
-              if soup.title
-              else "NO TITLE"
-          )
-
-          print("\nALL LINKS CONTAINING PRODUCT:")
-          print("=" * 70)
-
-          found = 0
-
-          for a in soup.find_all("a", href=True):
-
-              href = a.get("href", "").strip()
-              text = " ".join(
-                  a.get_text(" ", strip=True).split()
+          try:
+              response = requests.get(
+                  url,
+                  headers=headers,
+                  timeout=30
               )
 
-              if "product" in href.lower():
+              html = response.text
 
-                  print(
-                      f"TEXT: {text[:120]}\n"
-                      f"HREF: {href}\n"
-                      + "-" * 70
-                  )
+              print("STATUS:", response.status_code)
+              print("FINAL URL:", response.url)
+              print("HTML LENGTH:", len(html))
 
-                  found += 1
+          except Exception as e:
+              print("REQUEST ERROR:", e)
+              raise
 
-          print(
-              "\nPRODUCT LINKS FOUND:",
-              found
-          )
+          # --------------------------------------------------
+          # NEXT.JS / APPLICATION DATA
+          # --------------------------------------------------
 
-          print("\nFIRST 50 LINKS:")
+          print()
+          print("NEXT.JS / APPLICATION DATA")
           print("=" * 70)
 
-          count = 0
+          next_patterns = [
+              "__NEXT_DATA__",
+              "_next/data",
+              "buildId",
+              "pageProps",
+              "initialState",
+              "initialData",
+              "__APOLLO_STATE__",
+              "getServerSideProps",
+              "getStaticProps",
+          ]
 
-          for a in soup.find_all("a", href=True):
+          html_lower = html.lower()
 
-              href = a.get("href", "").strip()
-              text = " ".join(
-                  a.get_text(" ", strip=True).split()
+          for pattern in next_patterns:
+              print(
+                  f"{pattern}: "
+                  f"{pattern.lower() in html_lower}"
               )
 
-              if href:
+          # --------------------------------------------------
+          # ALL URLS THAT LOOK INTERESTING
+          # --------------------------------------------------
 
-                  print(
-                      f"{count + 1}. "
-                      f"{text[:100]} --> {href}"
+          print()
+          print("POSSIBLE API / PRODUCT URLS")
+          print("=" * 70)
+
+          urls = set(
+              re.findall(
+                  r'https?://[^"\'\s<>]+',
+                  html
+              )
+          )
+
+          interesting_urls = []
+
+          for u in urls:
+
+              clean_url = (
+                  u.replace("\\/", "/")
+                   .replace("&amp;", "&")
+              )
+
+              ul = clean_url.lower()
+
+              if any(
+                  keyword in ul
+                  for keyword in [
+                      "api",
+                      "product",
+                      "catalog",
+                      "collection",
+                      "inventory",
+                      "smartbiz",
+                      "amazon",
+                      "stock",
+                      "item",
+                  ]
+              ):
+                  interesting_urls.append(
+                      clean_url
                   )
 
-                  count += 1
+          for u in sorted(
+              interesting_urls
+          ):
+              print(u[:1000])
 
-                  if count >= 50:
-                      break
+          print(
+              f"\nInteresting URLs found: "
+              f"{len(interesting_urls)}"
+          )
 
-          print("\nPRODUCT-LIKE HTML:")
+          # --------------------------------------------------
+          # PRODUCT DATA KEYWORDS
+          # --------------------------------------------------
+
+          print()
+          print("PRODUCT DATA KEYWORDS")
           print("=" * 70)
 
           keywords = [
-              "product",
-              "shopify",
-              "collection",
+              "productId",
+              "product_id",
+              "productName",
+              "product_name",
+              "productTitle",
+              "product_title",
+              "productCode",
+              "product_code",
+              "inventory",
+              "quantity",
+              "availableQuantity",
+              "available_quantity",
+              "stock",
+              "stockQuantity",
+              "stock_quantity",
+              "variants",
               "price",
-              "add to cart",
-              "sold out"
+              "sellingPrice",
+              "selling_price",
+              "mrp",
+              "sku",
+              "items",
+              "products",
+              "catalog",
+              "catalogue",
           ]
 
-          html_lower = response.text.lower()
-
           for keyword in keywords:
-              print(
-                  f"{keyword}:",
-                  keyword in html_lower
+
+              count = html_lower.count(
+                  keyword.lower()
               )
 
-          print("\nEND DIAGNOSTIC")
+              print(
+                  f"{keyword}: {count}"
+              )
+
+          # --------------------------------------------------
+          # SEARCH FOR PRODUCT-LIKE URL PATHS
+          # --------------------------------------------------
+
+          print()
+          print("PRODUCT-LIKE PATHS")
           print("=" * 70)
+
+          paths = set(
+              re.findall(
+                  r'["\']([^"\']{1,500})["\']',
+                  html
+              )
+          )
+
+          product_paths = []
+
+          for path in paths:
+
+              path_lower = path.lower()
+
+              if any(
+                  keyword in path_lower
+                  for keyword in [
+                      "/product",
+                      "/products",
+                      "productid",
+                      "product_id",
+                      "productname",
+                      "product_name",
+                      "/item",
+                      "/items",
+                      "/catalog",
+                      "/inventory",
+                      "/stock",
+                  ]
+              ):
+
+                  product_paths.append(path)
+
+          for path in sorted(
+              set(product_paths)
+          )[:100]:
+
+              print(path[:1000])
+
+          print(
+              f"\nProduct-like paths found: "
+              f"{len(product_paths)}"
+          )
+
+          # --------------------------------------------------
+          # PRODUCT DATA SNIPPETS
+          # --------------------------------------------------
+
+          print()
+          print("PRODUCT DATA SNIPPETS")
+          print("=" * 70)
+
+          search_terms = [
+              "productId",
+              "productName",
+              "productTitle",
+              "sellingPrice",
+              "inventory",
+              "quantity",
+              "availableQuantity",
+              "stock",
+              "sku",
+              "variants",
+          ]
+
+          shown = 0
+
+          for term in search_terms:
+
+              start = 0
+
+              while True:
+
+                  pos = html_lower.find(
+                      term.lower(),
+                      start
+                  )
+
+                  if pos == -1:
+                      break
+
+                  snippet_start = max(
+                      0,
+                      pos - 700
+                  )
+
+                  snippet_end = min(
+                      len(html),
+                      pos + 1800
+                  )
+
+                  snippet = html[
+                      snippet_start:snippet_end
+                  ]
+
+                  print()
+                  print(
+                      f"--- MATCH: {term} ---"
+                  )
+                  print(snippet)
+
+                  shown += 1
+
+                  if shown >= 15:
+                      break
+
+                  start = pos + len(term)
+
+              if shown >= 15:
+                  break
+
+          # --------------------------------------------------
+          # SCRIPT TAG INFORMATION
+          # --------------------------------------------------
+
+          print()
+          print("SCRIPT TAG SOURCES")
+          print("=" * 70)
+
+          script_sources = re.findall(
+              r'<script[^>]+src=["\']([^"\']+)',
+              html,
+              re.I
+          )
+
+          for src in script_sources:
+
+              print(src)
+
+          print(
+              f"\nScript sources found: "
+              f"{len(script_sources)}"
+          )
+
+          # --------------------------------------------------
+          # END
+          # --------------------------------------------------
+
+          print()
+          print("=" * 70)
+          print("END DIAGNOSTIC")
+          print("=" * 70)
+
           PY
