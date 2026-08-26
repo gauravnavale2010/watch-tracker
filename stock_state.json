@@ -1,338 +1,922 @@
 {
-  "https://www.hmtwatches.store/product/2464a34f-9126-4fb8-8a64-3b6dcc04133c": {
-    "name": "Buy HMT Vijay Lum Quartz",
-    "url": "https://www.hmtwatches.store/product/2464a34f-9126-4fb8-8a64-3b6dcc04133c",
-    "source": "HMT Store",
-    "available": false,
+  "HMT Store|navigation|None": {
+    "name": "Navigation",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 2575
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ii9RL2cxVTY5aDRCM0FISkJnODEyaUE9PSIsInZhbHVlIjoiNDFkUjRpTCttRkZFcVJLYW5WSWQydz09IiwibWFjIjoiZjgyMTBkZmMzNGIyMmQ0YjFjNjEyYmVlNWQyYmFjYjYxM2UxMjYyNTNmODhiYTllMjI5YzNjNmM4ZmMzOTY5OSIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ii9RL2cxVTY5aDRCM0FISkJnODEyaUE9PSIsInZhbHVlIjoiNDFkUjRpTCttRkZFcVJLYW5WSWQydz09IiwibWFjIjoiZjgyMTBkZmMzNGIyMmQ0YjFjNjEyYmVlNWQyYmFjYjYxM2UxMjYyNTNmODhiYTllMjI5YzNjNmM4ZmMzOTY5OSIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|logo settings|None": {
+    "name": "Logo Settings",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ii9SSzdKajVZL0NjNVgvaDJiVHpDZVE9PSIsInZhbHVlIjoicUIzR0hqTVZISk1sRzRHOFMyWHU5Zz09IiwibWFjIjoiYzcwZWVhMjhiYWY0MDZhODMwYmViOTE5N2YzMjQyMGUzNzdmMmQxY2VmNGUzYTgxODQ5YTE4YTU2MWIwNDJjOCIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ii9SSzdKajVZL0NjNVgvaDJiVHpDZVE9PSIsInZhbHVlIjoicUIzR0hqTVZISk1sRzRHOFMyWHU5Zz09IiwibWFjIjoiYzcwZWVhMjhiYWY0MDZhODMwYmViOTE5N2YzMjQyMGUzNzdmMmQxY2VmNGUzYTgxODQ5YTE4YTU2MWIwNDJjOCIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|desktop title styles|None": {
+    "name": "Desktop Title Styles",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjA1UkJYSlRwYnZoNjRLc25iWGQvenc9PSIsInZhbHVlIjoiOUZiYXRMT0pBaEJnS3c0bTk0ZUxxZz09IiwibWFjIjoiZDAwNjU5MWZiODUxYmFlZjY4YmVmNzNlZTRhNzM2MmRkZDZjMTZjZjNlNDJkZWI2OWJiNDA2ZTcwN2NmMzkxZiIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjA1UkJYSlRwYnZoNjRLc25iWGQvenc9PSIsInZhbHVlIjoiOUZiYXRMT0pBaEJnS3c0bTk0ZUxxZz09IiwibWFjIjoiZDAwNjU5MWZiODUxYmFlZjY4YmVmNzNlZTRhNzM2MmRkZDZjMTZjZjNlNDJkZWI2OWJiNDA2ZTcwN2NmMzkxZiIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|sticky title styles|None": {
+    "name": "Sticky Title Styles",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjA5eUVoaTRBY0JxZmhoUzk0YUNldlE9PSIsInZhbHVlIjoiejFkOGhxdG9LV3lSQTh4Y0lrQXZlQT09IiwibWFjIjoiZDhmYTNiNzkwNzEyMjI5N2ZiNjY3NGFhYzlhN2UyZTU3ZDRmNzc3NTE4ODI2MzUwOGIxOTg0ODJmNjNiM2YyZCIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjA5eUVoaTRBY0JxZmhoUzk0YUNldlE9PSIsInZhbHVlIjoiejFkOGhxdG9LV3lSQTh4Y0lrQXZlQT09IiwibWFjIjoiZDhmYTNiNzkwNzEyMjI5N2ZiNjY3NGFhYzlhN2UyZTU3ZDRmNzc3NTE4ODI2MzUwOGIxOTg0ODJmNjNiM2YyZCIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|mobile title styles|None": {
+    "name": "Mobile Title Styles",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 2446
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjBQc0NQYitFMUJFNlY4SXZCT3pRTXc9PSIsInZhbHVlIjoiQzhWOGF0UW5vMnFMRUVFblhIOXhldz09IiwibWFjIjoiNDYyMjM2ZmYxYTQ0NTUxMmZhZWJhYjNmZjE3NTFhOTk3YTM5YTk1OWQ2NDljYjMzNGJlYzYyYjVhODZkYzQ1MyIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjBQc0NQYitFMUJFNlY4SXZCT3pRTXc9PSIsInZhbHVlIjoiQzhWOGF0UW5vMnFMRUVFblhIOXhldz09IiwibWFjIjoiNDYyMjM2ZmYxYTQ0NTUxMmZhZWJhYjNmZjE3NTFhOTk3YTM5YTk1OWQ2NDljYjMzNGJlYzYyYjVhODZkYzQ1MyIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|announcement|None": {
+    "name": "Announcement",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjBYcC9OLzB2T2V2RUxrYVFTQjhEVUE9PSIsInZhbHVlIjoiNG5rWllrNStObFdPNUNvQjQ4MG1UZz09IiwibWFjIjoiNTVkNjkyYjM0NTVhY2UwOWYxY2JhYjQxNThmZDEzNWM3NzIyZWY4MjIwMzZkMmMxYzc1YTc4MzZiNTU0MGFjMiIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjBYcC9OLzB2T2V2RUxrYVFTQjhEVUE9PSIsInZhbHVlIjoiNG5rWllrNStObFdPNUNvQjQ4MG1UZz09IiwibWFjIjoiNTVkNjkyYjM0NTVhY2UwOWYxY2JhYjQxNThmZDEzNWM3NzIyZWY4MjIwMzZkMmMxYzc1YTc4MzZiNTU0MGFjMiIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|animation|None": {
+    "name": "Animation",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 2200
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjE1SldPVmlWWSthZUgzUW9lUnFJYnc9PSIsInZhbHVlIjoiTDNINHBjbm00N1ZwcGlBRHZTOHhsdz09IiwibWFjIjoiZjU4Mzg2YzY5OWY5YWYzMmY3ZDI5YTdlZjgzMjIxMTE2YzI1ZWQ4ZTVhNzJiNDZlNGQwZmViOWNiZTQ0YmIzMCIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjE1SldPVmlWWSthZUgzUW9lUnFJYnc9PSIsInZhbHVlIjoiTDNINHBjbm00N1ZwcGlBRHZTOHhsdz09IiwibWFjIjoiZjU4Mzg2YzY5OWY5YWYzMmY3ZDI5YTdlZjgzMjIxMTE2YzI1ZWQ4ZTVhNzJiNDZlNGQwZmViOWNiZTQ0YmIzMCIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|image carousel|None": {
+    "name": "Image Carousel",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjE3TlI0S01rRjJHbFFPTWZRWUlWTXc9PSIsInZhbHVlIjoiMXNlc1VpQlhJVGQ4bEo5UmFuR251QT09IiwibWFjIjoiMzExNDlhNjM1MjlkNTY0ZDYwYmVmYzA4MjczYjBmYTk2NmY4MWI0YzFjOTllOTdhMDU0NzhhOGY0YTIxNjNjZSIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjE3TlI0S01rRjJHbFFPTWZRWUlWTXc9PSIsInZhbHVlIjoiMXNlc1VpQlhJVGQ4bEo5UmFuR251QT09IiwibWFjIjoiMzExNDlhNjM1MjlkNTY0ZDYwYmVmYzA4MjczYjBmYTk2NmY4MWI0YzFjOTllOTdhMDU0NzhhOGY0YTIxNjNjZSIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|image slide|None": {
+    "name": "Image Slide",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 5000
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjFJSTM3cGtySDM3WmxaT3dFV2NFRlE9PSIsInZhbHVlIjoiOWJxMzBJcHIwOFgwK3VRQUlWOWhRdz09IiwibWFjIjoiZWM3NzA1ZmE4MjliN2RjYmZmMzhiZDk3NTBhZGYwM2Y5ZThhZTc5NDhhNDQ0NTM3OGM0ZjNjODM2ZmFhNDRiNCIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjFJSTM3cGtySDM3WmxaT3dFV2NFRlE9PSIsInZhbHVlIjoiOWJxMzBJcHIwOFgwK3VRQUlWOWhRdz09IiwibWFjIjoiZWM3NzA1ZmE4MjliN2RjYmZmMzhiZDk3NTBhZGYwM2Y5ZThhZTc5NDhhNDQ0NTM3OGM0ZjNjODM2ZmFhNDRiNCIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|image|None": {
+    "name": "Image",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjFPejBBODNSbmppRUFmNUhQd3oveWc9PSIsInZhbHVlIjoidzdlU0pUdGdxYVFHZHBmVXdXZmhlUT09IiwibWFjIjoiOTdiYWM1YWEyZjA3MjM5N2VjMWE4YjVmODc4YzA2OTNmZGRiNzk2NWY3MGViNDU2YjEzYjA4MGM0NTRmN2I4ZSIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjFPejBBODNSbmppRUFmNUhQd3oveWc9PSIsInZhbHVlIjoidzdlU0pUdGdxYVFHZHBmVXdXZmhlUT09IiwibWFjIjoiOTdiYWM1YWEyZjA3MjM5N2VjMWE4YjVmODc4YzA2OTNmZGRiNzk2NWY3MGViNDU2YjEzYjA4MGM0NTRmN2I4ZSIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|offers|None": {
+    "name": "Offers",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjFXUVFJSkZSWllja1JTYmZmWktPZnc9PSIsInZhbHVlIjoiRmpRNHByRzU5dUlTd3M1SnZ0YUZRUT09IiwibWFjIjoiNjdhNmNmZjdiMmYzM2Y3MTcyMjJjNDUwZTc3MTQ1Nzg4ZDc4OGE5NzlhYmYzZjJkYTRjYjQ3MWJjZGYzMDczMiIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjFXUVFJSkZSWllja1JTYmZmWktPZnc9PSIsInZhbHVlIjoiRmpRNHByRzU5dUlTd3M1SnZ0YUZRUT09IiwibWFjIjoiNjdhNmNmZjdiMmYzM2Y3MTcyMjJjNDUwZTc3MTQ1Nzg4ZDc4OGE5NzlhYmYzZjJkYTRjYjQ3MWJjZGYzMDczMiIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|outline styles|None": {
+    "name": "Outline Styles",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 2200
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjFvTHI0Z2tUUEUwa3FFU3FzMjVUcXc9PSIsInZhbHVlIjoiWFdJQUhrK3RrM2l5c1JxZEJLQSswQT09IiwibWFjIjoiNmQ4OWRjYTJiNDk4ZTBjMjM3NTQyYzcyOTBjYzRmNGUxNzFjZWU3ODU0NTcxZWM4NWE5MmE3ZTY3MGM0NjM4OCIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjFvTHI0Z2tUUEUwa3FFU3FzMjVUcXc9PSIsInZhbHVlIjoiWFdJQUhrK3RrM2l5c1JxZEJLQSswQT09IiwibWFjIjoiNmQ4OWRjYTJiNDk4ZTBjMjM3NTQyYzcyOTBjYzRmNGUxNzFjZWU3ODU0NTcxZWM4NWE5MmE3ZTY3MGM0NjM4OCIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|description|None": {
+    "name": "Description",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 2200
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjJ3OWV1bTZaUmZMMUZjNlUxVlAvbGc9PSIsInZhbHVlIjoieDJURzN3VXhuUjNLSXZobDNTVFI4Zz09IiwibWFjIjoiYTdhYWM4ODcxZWFiMGI2NTc2ZjM2N2ZmNTQ2MThmZjFhMmMyYWU5ZTlmNmNhOWRkODAzOGI4ZjI0NzFkY2E0OCIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjJ3OWV1bTZaUmZMMUZjNlUxVlAvbGc9PSIsInZhbHVlIjoieDJURzN3VXhuUjNLSXZobDNTVFI4Zz09IiwibWFjIjoiYTdhYWM4ODcxZWFiMGI2NTc2ZjM2N2ZmNTQ2MThmZjFhMmMyYWU5ZTlmNmNhOWRkODAzOGI4ZjI0NzFkY2E0OCIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|code|None": {
+    "name": "Code",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 2250
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjJlMzgwK25DcWs5VDBPb2JvQkVkSEE9PSIsInZhbHVlIjoiUFZheUhNcHcwVGZ4UG1VNmZ5M0h0QT09IiwibWFjIjoiNjkwOTEzYjBlMTE2YjJlNGFhN2VmNmU3N2VmZThmMzljMjVkMTAyYmNjYTFlMTkxNDM2MzhlY2QyNTgxNjFjMyIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjJlMzgwK25DcWs5VDBPb2JvQkVkSEE9PSIsInZhbHVlIjoiUFZheUhNcHcwVGZ4UG1VNmZ5M0h0QT09IiwibWFjIjoiNjkwOTEzYjBlMTE2YjJlNGFhN2VmNmU3N2VmZThmMzljMjVkMTAyYmNjYTFlMTkxNDM2MzhlY2QyNTgxNjFjMyIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|layout|None": {
+    "name": "Layout",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 2200
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjJrUnB3OTdtYmU1b1VTUlljdmNJZnc9PSIsInZhbHVlIjoiampRaHZKRzJrQm4wTTRvOCtNdGhsQT09IiwibWFjIjoiYzFjODcyY2QzOThiMGI2YjZjYTEyNjc5NDAyNTAyYWE4Zjg3ZDhjNzQzMjE4YmUyZGE0MGVmNTVhODhkMWEzMyIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjJrUnB3OTdtYmU1b1VTUlljdmNJZnc9PSIsInZhbHVlIjoiampRaHZKRzJrQm4wTTRvOCtNdGhsQT09IiwibWFjIjoiYzFjODcyY2QzOThiMGI2YjZjYTEyNjc5NDAyNTAyYWE4Zjg3ZDhjNzQzMjE4YmUyZGE0MGVmNTVhODhkMWEzMyIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|mobile layout|None": {
+    "name": "Mobile Layout",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjJsdUhWQnpxUHJhZ2NTSVBNcnRjT2c9PSIsInZhbHVlIjoiVVR6YUxFR2Zqc0xmclNpR3lDb05iUT09IiwibWFjIjoiMzU5YzBiZjg3NmJlNTgxNDQxZmZkMzBjYTA1Njk4MDc1NWUxZThhN2YwMzQ3YWM1NzVkODYzNDE4MzYxZjU0MSIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjJsdUhWQnpxUHJhZ2NTSVBNcnRjT2c9PSIsInZhbHVlIjoiVVR6YUxFR2Zqc0xmclNpR3lDb05iUT09IiwibWFjIjoiMzU5YzBiZjg3NmJlNTgxNDQxZmZkMzBjYTA1Njk4MDc1NWUxZThhN2YwMzQ3YWM1NzVkODYzNDE4MzYxZjU0MSIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|blog posts|None": {
+    "name": "Blog Posts",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjN2V1QrMEkrdnVtTFk1RVduMmV2TUE9PSIsInZhbHVlIjoiaHBmZkhXRDNGVnhHeVljWWM3NUN6dz09IiwibWFjIjoiNmY0ZGNhMjRhZDIyMzg4YTU0ZWQ0MzM2OWY0M2ExOWMwOTJhYzI2ZjVmNjRkNTQ3ZTZlZjgyYWE3YjhlODAzNyIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjN2V1QrMEkrdnVtTFk1RVduMmV2TUE9PSIsInZhbHVlIjoiaHBmZkhXRDNGVnhHeVljWWM3NUN6dz09IiwibWFjIjoiNmY0ZGNhMjRhZDIyMzg4YTU0ZWQ0MzM2OWY0M2ExOWMwOTJhYzI2ZjVmNjRkNTQ3ZTZlZjgyYWE3YjhlODAzNyIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|heading|None": {
+    "name": "Heading",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjNQcFZaMkN1YlkzMm4wbXdSRlRKU0E9PSIsInZhbHVlIjoiOUl0OXlkaVBoVDJWZnhvME5HeS9BQT09IiwibWFjIjoiYmY0NjUxYTdlN2VhNzM3OWQ4ZmMzY2NlNDFhMzI4OTMwYTNiMTQ5ZWNmZWVmOGRiNmY5MTdhNDljNGI0NjZlMyIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjNQcFZaMkN1YlkzMm4wbXdSRlRKU0E9PSIsInZhbHVlIjoiOUl0OXlkaVBoVDJWZnhvME5HeS9BQT09IiwibWFjIjoiYmY0NjUxYTdlN2VhNzM3OWQ4ZmMzY2NlNDFhMzI4OTMwYTNiMTQ5ZWNmZWVmOGRiNmY5MTdhNDljNGI0NjZlMyIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|card layout|None": {
+    "name": "Card Layout",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 2200
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjNqQ0FZZkVJc0UzWXYyUFhqZWhYK2c9PSIsInZhbHVlIjoiWmRVM3lNYmhSOGlXQktaN1c0V1dwUT09IiwibWFjIjoiNjEzZTYyN2I2OWNiYTdkOGQ2ZmI5ZTFjYjBjYWM2YWUzMmQ4OGYwNjhhMTg3MzYwNTVmY2Y1YWExY2UyMTZiYyIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjNqQ0FZZkVJc0UzWXYyUFhqZWhYK2c9PSIsInZhbHVlIjoiWmRVM3lNYmhSOGlXQktaN1c0V1dwUT09IiwibWFjIjoiNjEzZTYyN2I2OWNiYTdkOGQ2ZmI5ZTFjYjBjYWM2YWUzMmQ4OGYwNjhhMTg3MzYwNTVmY2Y1YWExY2UyMTZiYyIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|categories|None": {
+    "name": "Categories",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjRJNDNBYmI4d2sxbEdDVXFLQlRqK1E9PSIsInZhbHVlIjoiUUk5RHZOckcrQURya28yNDRyQXN3Zz09IiwibWFjIjoiYmJiYTE4NmNjOGIzNmY4Zjc1NTA0ZmZmMDEzN2Q4ZDBmZTM2ZmM0MWYyNzQ3YzNhMGJkYjA5YzEzMGI0NTQ4MSIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjRJNDNBYmI4d2sxbEdDVXFLQlRqK1E9PSIsInZhbHVlIjoiUUk5RHZOckcrQURya28yNDRyQXN3Zz09IiwibWFjIjoiYmJiYTE4NmNjOGIzNmY4Zjc1NTA0ZmZmMDEzN2Q4ZDBmZTM2ZmM0MWYyNzQ3YzNhMGJkYjA5YzEzMGI0NTQ4MSIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|button|None": {
+    "name": "Button",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 2200
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjRNb0NPbVNJTE9UOWhyanhReWFwaFE9PSIsInZhbHVlIjoidnlrdzlUaDFjSzdoQnZhNVZvRVRLUT09IiwibWFjIjoiNjYzMTVhYmM5ODAzNjdjODVlMDEzMDEyZjc5Y2I1Mjk1MGE3MTBiNjhmNjAwYzA1YzBkOTlhYzVjYjFhMDMzMyIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjRNb0NPbVNJTE9UOWhyanhReWFwaFE9PSIsInZhbHVlIjoidnlrdzlUaDFjSzdoQnZhNVZvRVRLUT09IiwibWFjIjoiNjYzMTVhYmM5ODAzNjdjODVlMDEzMDEyZjc5Y2I1Mjk1MGE3MTBiNjhmNjAwYzA1YzBkOTlhYzVjYjFhMDMzMyIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|title|None": {
+    "name": "Title",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjVkeHkzNnczMXNlSUVLd3NaY1I2Q1E9PSIsInZhbHVlIjoiUXljV1NBeDVQKzFsVTVmK1VxZmNadz09IiwibWFjIjoiMzgxOWZiYmI3YWE1ZGU1MTVlMTYwYjE2Mjk4NTIzM2FkZWYxZWJkNmQwYTQwNjg1ODliZTRhNTFmOWFlODJhYyIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjVkeHkzNnczMXNlSUVLd3NaY1I2Q1E9PSIsInZhbHVlIjoiUXljV1NBeDVQKzFsVTVmK1VxZmNadz09IiwibWFjIjoiMzgxOWZiYmI3YWE1ZGU1MTVlMTYwYjE2Mjk4NTIzM2FkZWYxZWJkNmQwYTQwNjg1ODliZTRhNTFmOWFlODJhYyIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": true,
+  "HMT Store|price|None": {
+    "name": "Price",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 2594
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjVyZVNyWWVkZ0hSNVJQVm1jTHkzUXc9PSIsInZhbHVlIjoiY2lJWmhjRElHWlN0M2NodExpRmJiZz09IiwibWFjIjoiNTk2NzRmYjIwOTkwZWZmNTczMDRjMjFmNjdhNDI5ODk3YmJiYmVhYzcxM2M1YzQ0ZTdmMzE5ZTFlZmY5MzJhZCIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjVyZVNyWWVkZ0hSNVJQVm1jTHkzUXc9PSIsInZhbHVlIjoiY2lJWmhjRElHWlN0M2NodExpRmJiZz09IiwibWFjIjoiNTk2NzRmYjIwOTkwZWZmNTczMDRjMjFmNjdhNDI5ODk3YmJiYmVhYzcxM2M1YzQ0ZTdmMzE5ZTFlZmY5MzJhZCIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|quick view|None": {
+    "name": "Quick View",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 2800
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjZLMjRtc0cya1dLZW4zaXdVUnpUTmc9PSIsInZhbHVlIjoib3dnMFA5SlhiWk00N1FoWXY1MVNFUT09IiwibWFjIjoiMGY1OGE5YTA3ZDRhMmZiYmJhNWUzOWJjYzJjZmNiNTY2NjE3YWI2OTU4YjVkYTJjZmQ1ZjkxNGRhNTY5NzFlOSIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjZLMjRtc0cya1dLZW4zaXdVUnpUTmc9PSIsInZhbHVlIjoib3dnMFA5SlhiWk00N1FoWXY1MVNFUT09IiwibWFjIjoiMGY1OGE5YTA3ZDRhMmZiYmJhNWUzOWJjYzJjZmNiNTY2NjE3YWI2OTU4YjVkYTJjZmQ1ZjkxNGRhNTY5NzFlOSIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|cart button|None": {
+    "name": "Cart Button",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjcyYWpVbm5ydkVnRWlTK2lMcEVwQ1E9PSIsInZhbHVlIjoidnVOZmdiZTc3QTFTQS9yVHBWTE1FUT09IiwibWFjIjoiZGNiMjdmZTI1OWQyYzcxYmJhNmM4OTJjN2NkODIzODY5ZjZlOGU5YWM0YTNjYTc0ODdkN2E1MGFkZjI5NjUwMyIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjcyYWpVbm5ydkVnRWlTK2lMcEVwQ1E9PSIsInZhbHVlIjoidnVOZmdiZTc3QTFTQS9yVHBWTE1FUT09IiwibWFjIjoiZGNiMjdmZTI1OWQyYzcxYmJhNmM4OTJjN2NkODIzODY5ZjZlOGU5YWM0YTNjYTc0ODdkN2E1MGFkZjI5NjUwMyIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|product title|None": {
+    "name": "Product Title",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjdGaFBRdFZvM1hpN1dmSFZueTdzZVE9PSIsInZhbHVlIjoibVhGdmV0ZVl6ckhqWDh1WFUza2FEUT09IiwibWFjIjoiYTdmMGI5ZTRiMmI3Yzc1Njk2ZmVjOWQ1MWIxZjQ2OTliMDhmMmNlMjUwN2MyZWRlZjc0ZjY5YjYyNjQxN2RmZiIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjdGaFBRdFZvM1hpN1dmSFZueTdzZVE9PSIsInZhbHVlIjoibVhGdmV0ZVl6ckhqWDh1WFUza2FEUT09IiwibWFjIjoiYTdmMGI5ZTRiMmI3Yzc1Njk2ZmVjOWQ1MWIxZjQ2OTliMDhmMmNlMjUwN2MyZWRlZjc0ZjY5YjYyNjQxN2RmZiIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|compare at price|None": {
+    "name": "Compare At Price",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjdKN1RsMmtwQ1o5a1JIUFRQdC80QVE9PSIsInZhbHVlIjoidkg2MklmaVhUeHpadWgrNmVSL0RKQT09IiwibWFjIjoiYmE4ZjZiNDNmMmNiZGEwMGY4YTNlM2M0MTRjNmM5YjVmNzIyYjNmYmM4ZWJjZjExODBjOWNkMTI0YjU1Y2ViMCIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjdKN1RsMmtwQ1o5a1JIUFRQdC80QVE9PSIsInZhbHVlIjoidkg2MklmaVhUeHpadWgrNmVSL0RKQT09IiwibWFjIjoiYmE4ZjZiNDNmMmNiZGEwMGY4YTNlM2M0MTRjNmM5YjVmNzIyYjNmYmM4ZWJjZjExODBjOWNkMTI0YjU1Y2ViMCIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|discount percentage|None": {
+    "name": "Discount Percentage",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjdRTnZHK2h1aGVkVGhpSVYrZFIzcUE9PSIsInZhbHVlIjoiSmxvb1hhcVFLS3d0WHhzak5FNjZ0UT09IiwibWFjIjoiOTRhOGRhZTY5OGZjZTVkYjJlNjBkYzhhMTA4ZjNiYmI5YTYzNzFlYmY3NGVjOTU3OTYwMTIzMDBlZGZlNjlhNCIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjdRTnZHK2h1aGVkVGhpSVYrZFIzcUE9PSIsInZhbHVlIjoiSmxvb1hhcVFLS3d0WHhzak5FNjZ0UT09IiwibWFjIjoiOTRhOGRhZTY5OGZjZTVkYjJlNjBkYzhhMTA4ZjNiYmI5YTYzNzFlYmY3NGVjOTU3OTYwMTIzMDBlZGZlNjlhNCIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|checkout button|None": {
+    "name": "Checkout Button",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 2200
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjdpR05jdE55U1hBYTZqZ2ljRXBPRUE9PSIsInZhbHVlIjoiVTVtZE1LeWoyamVkdDh4WnkvWjYzZz09IiwibWFjIjoiMWVkOWIyMjdiMDkxNzY4MTk5MzMzZGM3ODk2NDRlZDJjMmE3NTI3N2RlMzIwNDI4ZDAyOTBhMWJlNmJjYzliMSIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjdpR05jdE55U1hBYTZqZ2ljRXBPRUE9PSIsInZhbHVlIjoiVTVtZE1LeWoyamVkdDh4WnkvWjYzZz09IiwibWFjIjoiMWVkOWIyMjdiMDkxNzY4MTk5MzMzZGM3ODk2NDRlZDJjMmE3NTI3N2RlMzIwNDI4ZDAyOTBhMWJlNmJjYzliMSIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|rating|None": {
+    "name": "Rating",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjdseFpUV0VkWkM2MlZPM3p3REdsUmc9PSIsInZhbHVlIjoiOFR4enk5Q25HZ0xWcUtidEVZV1RTUT09IiwibWFjIjoiMTFhZWVjMTc0NWQxNDQ1ZmZjY2VlODNhYjczZmMyOWJjOWFlY2NkNjgxZGRjYWJlYjg3NTYxOGViNjk3NDdmMyIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjdseFpUV0VkWkM2MlZPM3p3REdsUmc9PSIsInZhbHVlIjoiOFR4enk5Q25HZ0xWcUtidEVZV1RTUT09IiwibWFjIjoiMTFhZWVjMTc0NWQxNDQ1ZmZjY2VlODNhYjczZmMyOWJjOWFlY2NkNjgxZGRjYWJlYjg3NTYxOGViNjk3NDdmMyIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|offer|None": {
+    "name": "Offer",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 2446
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjgycmwyN1NkM3lWVXYrUDZBZWk5TUE9PSIsInZhbHVlIjoiSlFtMUxnL0pPYkxGUWZNdmtpQ3l6Zz09IiwibWFjIjoiODM0MGNiYjYyNzM2MmEzNjM2ZmU3NGI5MjRjYzdkMTBiZGJjMWE4YzQwZGEyNWExNjA4MGExMTg5ZDk0YmNhYiIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjgycmwyN1NkM3lWVXYrUDZBZWk5TUE9PSIsInZhbHVlIjoiSlFtMUxnL0pPYkxGUWZNdmtpQ3l6Zz09IiwibWFjIjoiODM0MGNiYjYyNzM2MmEzNjM2ZmU3NGI5MjRjYzdkMTBiZGJjMWE4YzQwZGEyNWExNjA4MGExMTg5ZDk0YmNhYiIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": true,
+  "HMT Store|testimonials|None": {
+    "name": "Testimonials",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 2650
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ijh1UnRwd1oraXlMRk5VTUhRTWp0NEE9PSIsInZhbHVlIjoiSGFQa1BHWGN0VFFSbkFISFpuSHpjUT09IiwibWFjIjoiN2EzYzEyYzEzOWM4NGE3ZGYzNTY3ZWE1MTgwZDYyNzA4MTdhNWMwYjljOTk5N2E4YzQ4ODdkZWJlOGEzMTkxYSIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ijh1UnRwd1oraXlMRk5VTUhRTWp0NEE9PSIsInZhbHVlIjoiSGFQa1BHWGN0VFFSbkFISFpuSHpjUT09IiwibWFjIjoiN2EzYzEyYzEzOWM4NGE3ZGYzNTY3ZWE1MTgwZDYyNzA4MTdhNWMwYjljOTk5N2E4YzQ4ODdkZWJlOGEzMTkxYSIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|instagram carousel|None": {
+    "name": "Instagram Carousel",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 2200
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjhTMjdkeU8wc0dFTS9qeTJKQm5mQ0E9PSIsInZhbHVlIjoiQmQ2R1VzclphTDQ5U0hWSHhiQlFsZz09IiwibWFjIjoiNWIwZWRhOWY0YTYyNzA0NDdiZTE0MDljOTYwZDczNmQwYzZjZWU4M2IyZWZmMDk2NTMyNTcyNTc2ZDg4Yjk4NSIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjhTMjdkeU8wc0dFTS9qeTJKQm5mQ0E9PSIsInZhbHVlIjoiQmQ2R1VzclphTDQ5U0hWSHhiQlFsZz09IiwibWFjIjoiNWIwZWRhOWY0YTYyNzA0NDdiZTE0MDljOTYwZDczNmQwYzZjZWU4M2IyZWZmMDk2NTMyNTcyNTc2ZDg4Yjk4NSIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|footer|None": {
+    "name": "Footer",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjkxL3htT2R6T09rZkNyeENieVF5RkE9PSIsInZhbHVlIjoiM3VQYzdPVk5CN1pyUFZsNlErSWhUUT09IiwibWFjIjoiOWUyNmI1YTg2YTk1YjI0ZDVmNzc0ZjFjYzJmNDdjM2VlZTg2ODI5NGJiOWQwM2M5YTBiOWNiNWZjY2VkZjFkMSIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjkxL3htT2R6T09rZkNyeENieVF5RkE9PSIsInZhbHVlIjoiM3VQYzdPVk5CN1pyUFZsNlErSWhUUT09IiwibWFjIjoiOWUyNmI1YTg2YTk1YjI0ZDVmNzc0ZjFjYzJmNDdjM2VlZTg2ODI5NGJiOWQwM2M5YTBiOWNiNWZjY2VkZjFkMSIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|branding settings|None": {
+    "name": "Branding Settings",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjlJU2RuN3ZpcGxTNE5MTlhWVkxkZlE9PSIsInZhbHVlIjoiZlpMMEw2dnQvZHdjemZuUjVJMnRUUT09IiwibWFjIjoiYjk4OTMyMmM1Y2RmZDgxOTc1OWQyMTYyYjViZDljM2M5NDFhNTk1NGViYmQyNzlkYzk1ZTAwOGIxOGE2ODgyNSIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjlJU2RuN3ZpcGxTNE5MTlhWVkxkZlE9PSIsInZhbHVlIjoiZlpMMEw2dnQvZHdjemZuUjVJMnRUUT09IiwibWFjIjoiYjk4OTMyMmM1Y2RmZDgxOTc1OWQyMTYyYjViZDljM2M5NDFhNTk1NGViYmQyNzlkYzk1ZTAwOGIxOGE2ODgyNSIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|footer content settings|None": {
+    "name": "Footer Content Settings",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 2200
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjlvbzdLZDVjTVh6WGtQL3lEU0IzdFE9PSIsInZhbHVlIjoiTHdvSjluWjlrMCtUNk1qcTZpck9MUT09IiwibWFjIjoiNDk1ZDMyMTFjOTI4YzY4NTAwNTMxOWRhNzI5YjE2YWZjYzdkNGZmMmY3NmE0MWY2ZTZmYTAwMTNiY2VjMzYyYiIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjlvbzdLZDVjTVh6WGtQL3lEU0IzdFE9PSIsInZhbHVlIjoiTHdvSjluWjlrMCtUNk1qcTZpck9MUT09IiwibWFjIjoiNDk1ZDMyMTFjOTI4YzY4NTAwNTMxOWRhNzI5YjE2YWZjYzdkNGZmMmY3NmE0MWY2ZTZmYTAwMTNiY2VjMzYyYiIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|divider settings|None": {
+    "name": "Divider Settings",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ik01R29ZZjhJcWFpNTd4VUlaTGJxdEE9PSIsInZhbHVlIjoiNFZQdHhSQUdoMHlQZVE5RUVJWHVyUT09IiwibWFjIjoiNDUwNjNkNzE3NTVmNjI1MDYxMmZmNWNjNDE2YTJjZTQ5MzA3ZGU2OWNlOGJkZjE1ZjdhYjJjZTQ5NjBiYzkxZCIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ik01R29ZZjhJcWFpNTd4VUlaTGJxdEE9PSIsInZhbHVlIjoiNFZQdHhSQUdoMHlQZVE5RUVJWHVyUT09IiwibWFjIjoiNDUwNjNkNzE3NTVmNjI1MDYxMmZmNWNjNDE2YTJjZTQ5MzA3ZGU2OWNlOGJkZjE1ZjdhYjJjZTQ5NjBiYzkxZCIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|for both|None": {
+    "name": "For Both",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 5000
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ik0vY3AzNkcvSkQ2VU1md0ZwYjZRWGc9PSIsInZhbHVlIjoiUjNWMWJqS05CeWNDbEdSeFJLQUdUQT09IiwibWFjIjoiZmMwZjg3MzVlODZmMjg5NmI3NDZmYTFiYmI0OGRlYjAwM2MwNDUzYWFjN2FhMzlkZTdlZWMxY2Q1MWJjMzFhYyIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ik0vY3AzNkcvSkQ2VU1md0ZwYjZRWGc9PSIsInZhbHVlIjoiUjNWMWJqS05CeWNDbEdSeFJLQUdUQT09IiwibWFjIjoiZmMwZjg3MzVlODZmMjg5NmI3NDZmYTFiYmI0OGRlYjAwM2MwNDUzYWFjN2FhMzlkZTdlZWMxY2Q1MWJjMzFhYyIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|for her|None": {
+    "name": "For Her",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 2200
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ik1FTDAyOENYdXhFWnhVb0owdXFyNGc9PSIsInZhbHVlIjoiMUVSYm5zaWZZQlcrb3c3RC9RaGNwQT09IiwibWFjIjoiNzU2ODYyN2RjZWE2ZWZlN2VmNmY0MGMzNDcwZTc3NTMxYTQ5NTMxMjRkMTU5ZTNhODA1YWNiZWFiMmY0MjNiOSIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ik1FTDAyOENYdXhFWnhVb0owdXFyNGc9PSIsInZhbHVlIjoiMUVSYm5zaWZZQlcrb3c3RC9RaGNwQT09IiwibWFjIjoiNzU2ODYyN2RjZWE2ZWZlN2VmNmY0MGMzNDcwZTc3NTMxYTQ5NTMxMjRkMTU5ZTNhODA1YWNiZWFiMmY0MjNiOSIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|for him|None": {
+    "name": "For Him",
+    "url": "",
+    "price": null,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ik1NMXdjd3hxdEV6UzlIVVZjVmxNelE9PSIsInZhbHVlIjoiTTNrc1ZFT05udFFFR0RWaEt0UjZvQT09IiwibWFjIjoiMmNhZWUzM2Q2NGM3MDIwMGI0YjQxNmQ5YmQyN2I5NDhiMWI4NTBhNGQyZmE3YTFhMWZiOTdmZjYyZDgxMTcxZSIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ik1NMXdjd3hxdEV6UzlIVVZjVmxNelE9PSIsInZhbHVlIjoiTTNrc1ZFT05udFFFR0RWaEt0UjZvQT09IiwibWFjIjoiMmNhZWUzM2Q2NGM3MDIwMGI0YjQxNmQ5YmQyN2I5NDhiMWI4NTBhNGQyZmE3YTFhMWZiOTdmZjYyZDgxMTcxZSIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": false,
+  "HMT Store|hmt chronograph fgss 12|8552.0": {
+    "name": "HMT Chronograph FGSS 12",
+    "url": "",
+    "price": 8552.0,
+    "stock": null,
     "quantity": null,
-    "price": 1950
+    "source": "HMT Store"
   },
-  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ik4wK1VyTnVFVTdzMUhJK0kvQXp2d1E9PSIsInZhbHVlIjoiUUxlUDRTWklacDNwLy9pSjVBbVpaUT09IiwibWFjIjoiZjdjNWQwMWU5Yjc2YzlmZjZmZTlkZjE1YjdjNDIwNjRhNTIwNmI2NjFlMzFjMDFhZDRhM2UzMTgwYjg5MmJiNiIsInRhZyI6IiJ9": {
-    "name": "Product Detail",
-    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ik4wK1VyTnVFVTdzMUhJK0kvQXp2d1E9PSIsInZhbHVlIjoiUUxlUDRTWklacDNwLy9pSjVBbVpaUT09IiwibWFjIjoiZjdjNWQwMWU5Yjc2YzlmZjZmZTlkZjE1YjdjNDIwNjRhNTIwNmI2NjFlMzFjMDFhZDRhM2UzMTgwYjg5MmJiNiIsInRhZyI6IiJ9",
-    "source": "HMT.in",
-    "available": true,
+  "HMT Store|hmt elegance eggg 56|3104.0": {
+    "name": "HMT Elegance EGGG 56",
+    "url": "",
+    "price": 3104.0,
+    "stock": null,
     "quantity": null,
-    "price": 2594
+    "source": "HMT Store"
+  },
+  "HMT Store|hmt galaxy cg2l01 ls|1464.0": {
+    "name": "HMT Galaxy CG2L01 LS",
+    "url": "",
+    "price": 1464.0,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|hmt galaxy cgs1g01 arabic white-ss|1564.0": {
+    "name": "HMT Galaxy CGS1G01 Arabic White-SS",
+    "url": "",
+    "price": 1564.0,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|hmt janata automatic white|14750.0": {
+    "name": "HMT Janata Automatic White",
+    "url": "",
+    "price": 14750.0,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|hmt plus jgsl 04|2325.0": {
+    "name": "HMT Plus JGSL 04",
+    "url": "",
+    "price": 2325.0,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|hmt plus jgsl 08 (arabic)|2300.0": {
+    "name": "HMT Plus JGSL 08 (Arabic)",
+    "url": "",
+    "price": 2300.0,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|hmt plus jgss 02 (4 arabic)|2252.0": {
+    "name": "HMT Plus JGSS 02 (4 Arabic)",
+    "url": "",
+    "price": 2252.0,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|hmt plus jgss 05|1925.0": {
+    "name": "HMT Plus JGSS 05",
+    "url": "",
+    "price": 1925.0,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|hmt ravi quartz gp yellow|2675.0": {
+    "name": "HMT Ravi Quartz GP Yellow",
+    "url": "",
+    "price": 2675.0,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|gandaberunda|None": {
+    "name": "GandaBerunda",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|bahadur|None": {
+    "name": "Bahadur",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|best sellers|None": {
+    "name": "Best Sellers",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|stellar|None": {
+    "name": "Stellar",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|tareeq|None": {
+    "name": "Tareeq",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|economic|None": {
+    "name": "Economic",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|kajal|None": {
+    "name": "Kajal",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|amrut|None": {
+    "name": "Amrut",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|rajat|None": {
+    "name": "Rajat",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|sona|None": {
+    "name": "Sona",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|sougandh|None": {
+    "name": "Sougandh",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|inox|None": {
+    "name": "INOX",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|fan favorites|None": {
+    "name": "Fan Favorites",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|roman|None": {
+    "name": "Roman",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|sangam|None": {
+    "name": "Sangam",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|galaxy|None": {
+    "name": "Galaxy",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|nass|None": {
+    "name": "NASS",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|vihaan|None": {
+    "name": "Vihaan",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|janata automatic|None": {
+    "name": "Janata Automatic",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|kohinoor|None": {
+    "name": "Kohinoor",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|home page|None": {
+    "name": "Home Page",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|slot 2_1744134800545_575|None": {
+    "name": "Slot 2_1744134800545_575",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|navigation menus|None": {
+    "name": "Navigation Menus",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|slot 1_1744134800545_686|None": {
+    "name": "Slot 1_1744134800545_686",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|text|None": {
+    "name": "Text",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|slot 3_1744134800545_733|None": {
+    "name": "Slot 3_1744134800545_733",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|desktop image|None": {
+    "name": "Desktop Image",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|mobile image|None": {
+    "name": "Mobile Image",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|link|None": {
+    "name": "Link",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|slot 4_1744134800545_206|None": {
+    "name": "Slot 4_1744134800545_206",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|blog|None": {
+    "name": "Blog",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|slot 6_1744134800545_982|None": {
+    "name": "Slot 6_1744134800545_982",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|category highlights|None": {
+    "name": "Category Highlights",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|select categories|None": {
+    "name": "Select Categories",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|product list|None": {
+    "name": "Product List",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|label|None": {
+    "name": "Label",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|collection link|None": {
+    "name": "Collection Link",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|slot 15_1744134800545_174|None": {
+    "name": "Slot 15_1744134800545_174",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|video widgets|None": {
+    "name": "Video Widgets",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|new slot|None": {
+    "name": "New Slot",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|post|None": {
+    "name": "Post",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|customer name|None": {
+    "name": "Customer Name",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|customer detail|None": {
+    "name": "Customer Detail",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|testimonial content|None": {
+    "name": "Testimonial Content",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|product link|None": {
+    "name": "Product Link",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|instagram profile url|None": {
+    "name": "Instagram Profile URL",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|buttons|None": {
+    "name": "Buttons",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|slot 17_1744134800545_292|None": {
+    "name": "Slot 17_1744134800545_292",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|category card|None": {
+    "name": "Category Card",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|product card|None": {
+    "name": "Product Card",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|collection card|None": {
+    "name": "Collection Card",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|tags|None": {
+    "name": "Tags",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|best seller tag|None": {
+    "name": "Best Seller Tag",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|offer tag|None": {
+    "name": "Offer Tag",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|limited time tag|None": {
+    "name": "Limited Time Tag",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|default menu|None": {
+    "name": "Default Menu",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|featured products|None": {
+    "name": "Featured Products",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|collections|None": {
+    "name": "Collections",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|all products|None": {
+    "name": "All Products",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|my orders|None": {
+    "name": "My Orders",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|cart page|None": {
+    "name": "Cart Page",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|announcements|None": {
+    "name": "Announcements",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|subtitle|None": {
+    "name": "Subtitle",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|slot3_1744134800545_292|None": {
+    "name": "Slot3_1744134800545_292",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
+  },
+  "HMT Store|full page cart|None": {
+    "name": "Full Page Cart",
+    "url": "",
+    "price": null,
+    "stock": null,
+    "quantity": null,
+    "source": "HMT Store"
   }
 }
