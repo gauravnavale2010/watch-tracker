@@ -5,7 +5,6 @@ on:
     - cron: '*/5 * * * *'
   workflow_dispatch:
 
-# Grant explicit write permissions to commit changes
 permissions:
   contents: write
 
@@ -14,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -22,17 +22,24 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install Dependencies
+      - name: Install Python Dependencies
         run: |
-          pip install requests beautifulsoup4
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4 playwright
+
+      - name: Install Chromium
+        run: |
+          playwright install --with-deps chromium
 
       - name: Run Tracker Script
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python main.py
+        run: |
+          python main.py
 
       - name: Save Updated Stock Cache
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "update: sync stock state"
+          file_pattern: stock_state.json
