@@ -1,12 +1,10 @@
+from datetime import datetime
 import json
 import os
 import re
-from datetime import datetime
-from urllib.parse import urljoin
-
 import requests
 from bs4 import BeautifulSoup
-
+from urllib.parse import urljoin, urlparse
 
 # ============================================================
 # CONFIG
@@ -20,6 +18,9 @@ STATE_FILE = "stock_state.json"
 HMT_STORE_URL = "https://www.hmtwatches.store/collections/all"
 HMT_IN_URL = "https://www.hmtwatches.in/all_product"
 
+HMT_STORE_BASE = "https://www.hmtwatches.store"
+HMT_IN_BASE = "https://www.hmtwatches.in"
+
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -27,279 +28,230 @@ HEADERS = {
         "Chrome/120.0.0.0 Safari/537.36"
     ),
     "Accept": (
-        "text/html,application/xhtml+xml,"
-        "application/xml;q=0.9,image/webp,*/*;q=0.8"
+        "text/html,application/xhtml+xml,application/xml;"
+        "q=0.9,image/avif,image/webp,*/*;q=0.8"
     ),
     "Accept-Language": "en-US,en;q=0.9",
-    "Cache-Control": "no-cache",
 }
+
+# User requested these to be ignored.
+EXCLUDED_KEYWORDS = [
+    "galaxy",
+    "inox",
+]
+
+# ============================================================
+# HTTP SESSION
+# ============================================================
 
 session = requests.Session()
 session.headers.update(HEADERS)
 
 
 # ============================================================
-# EXCLUSIONS
-# ============================================================
-
-EXCLUDED_KEYWORDS = [
-    "galaxy",
-    "inox",
-]
-
-
-# ============================================================
 # HELPERS
 # ============================================================
 
-def clean_text(value):
-    if value is None:
+def clean_text(text):
+    if not text:
         return ""
+    return re.sub(r"\s+", " ", text).strip()
 
-    return " ".join(str(value).split()).strip()
 
-
-def excluded(title):
+def is_excluded(title):
     title_lower = title.lower()
 
-    return any(
-        word in title_lower
-        for word in EXCLUDED_KEYWORDS
-    )
+    for keyword in EXCLUDED_KEYWORDS:
+        if re.search(rf"\b{re.escape(keyword)}\b", title_lower):
+            return True
+
+    return False
 
 
-def safe_int(value):
-    try:
-        if value is None:
-            return None
+def make_product_id(source, title, url):
+    """
+    URL is preferred because HMT.in can have multiple watches
+    with very similar titles.
+    """
+    raw = f"{source}|{url}|{title}".lower()
 
-        return int(
-            float(
-                str(value)
-                .replace(",", "")
-                .strip()
-            )
-        )
-
-    except Exception:
-        return None
+    return re.sub(r"[^a-z0-9]+", "_", raw).strip("_")
 
 
-def series_from_title(title):
-    keywords = [
-        "Stellar",
-        "Kohinoor",
+def extract_series(title):
+    series_keywords = [
+        "Pace",
+        "Plus",
+        "Vihaan",
+        "Elegance",
         "Sangam",
+        "Stellar",
         "Tareeq",
         "Janata",
         "Pilot",
         "Vijay",
         "Sona",
+        "Ravi",
+        "Kohinoor",
+        "Commando",
+        "Jawan",
+        "Vivek",
+        "Bahadur",
+        "Gandaberunda",
+        "Operation Sindoor",
+        "Chronograph",
         "Automatic",
         "Quartz",
-        "Pace",
-        "Plus",
-        "Vihaan",
-        "Elegance",
-        "Chronograph",
-        "Janta",
-        "Ravi",
     ]
 
-    for keyword in keywords:
-        if re.search(
-            rf"\b{re.escape(keyword)}\b",
-            title,
-            re.IGNORECASE,
-        ):
-            return keyword
+    for key in series_keywords:
+        if re.search(rf"\b{re.escape(key)}\b", title, re.IGNORECASE):
+            return key
 
     return "General"
 
 
-# ============================================================
-# STATE
-# ============================================================
+def extract_price(text):
+    patterns = [
+        r"₹\s*([\d,]+)",
+        r"Rs\.?\s*([\d,]+)",
+        r"INR\s*([\d,]+)",
+    ]
 
-def load_state():
+    for pattern in patterns:
+        match = re.search(pattern, text, re.IGNORECASE)
 
-    if not os.path.exists(STATE_FILE):
-        return {}
+        if match:
+            return match.group(1).replace(",", "")
 
-    try:
-        with open(
-            STATE_FILE,
-            "r",
-            encoding="utf-8",
-        ) as f:
-            data = json.load(f)
-
-        if isinstance(data, dict):
-            return data
-
-    except Exception as e:
-        print(
-            "Could not load state:",
-            e,
-        )
-
-    return {}
+    return "N/A"
 
 
-def save_state(state):
+def extract_quantity(text):
+    """
+    Attempts to detect explicit stock quantity.
 
-    temp_file = STATE_FILE + ".tmp"
+    Examples handled:
+    - 5 in stock
+    - Only 3 left
+    - 3 items available
+    - Available quantity: 4
 
-    with open(
-        temp_file,
-        "w",
-        encoding="utf-8",
-    ) as f:
+    If the website does not expose an actual quantity,
+    returns None rather than guessing.
+    """
 
-        json.dump(
-            state,
-            f,
-            indent=2,
-            ensure_ascii=False,
-        )
+    patterns = [
+        r"only\s+(\d+)\s+(?:left|remaining)",
+        r"(\d+)\s+(?:units?|items?)\s+(?:left|remaining|available)",
+        r"(\d+)\s+in\s+stock",
+        r"available\s*[:\-]?\s*(\d+)",
+        r"stock\s*[:\-]?\s*(\d+)",
+        r"quantity\s*[:\-]?\s*(\d+)",
+    ]
 
-    os.replace(
-        temp_file,
-        STATE_FILE,
-    )
+    for pattern in patterns:
+        match = re.search(pattern, text, re.IGNORECASE)
+
+        if match:
+            try:
+                return int(match.group(1))
+            except Exception:
+                pass
+
+    return None
+
+
+def detect_availability(text):
+    """
+    Conservative availability detection.
+
+    Explicit out-of-stock language wins.
+
+    Explicit purchase language is considered available.
+    """
+
+    text_lower = text.lower()
+
+    out_patterns = [
+        "out of stock",
+        "sold out",
+        "currently unavailable",
+        "not available",
+    ]
+
+    for phrase in out_patterns:
+        if phrase in text_lower:
+            return False
+
+    in_patterns = [
+        "add to cart",
+        "buy now",
+        "add to wishlist",
+        "available",
+        "in stock",
+    ]
+
+    for phrase in in_patterns:
+        if phrase in text_lower:
+            return True
+
+    # If no explicit signal exists, don't claim availability.
+    return False
+
+
+def extract_image(soup):
+    img = soup.find("img")
+
+    if not img:
+        return ""
+
+    for attribute in ["src", "data-src", "data-original"]:
+        value = img.get(attribute)
+
+        if value:
+            return urljoin(HMT_IN_BASE, value)
+
+    srcset = img.get("srcset")
+
+    if srcset:
+        first = srcset.split(",")[0].strip().split(" ")[0]
+
+        if first:
+            return urljoin(HMT_IN_BASE, first)
+
+    return ""
 
 
 # ============================================================
 # TELEGRAM
 # ============================================================
 
-def send_telegram(item, alert_type):
-
-    if not TELEGRAM_BOT_TOKEN:
-        print(
-            "ERROR: TELEGRAM_BOT_TOKEN missing"
-        )
+def send_telegram_alert(item, alert_type="RESTOCK"):
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+        print("WARNING: Telegram secrets are missing.")
         return False
 
-    if not TELEGRAM_CHAT_ID:
-        print(
-            "ERROR: TELEGRAM_CHAT_ID missing"
-        )
-        return False
-
-    title = item.get(
-        "title",
-        "HMT Watch",
-    )
-
-    price = item.get(
-        "price",
-        "N/A",
-    )
-
-    quantity = item.get(
-        "quantity"
-    )
-
-    source = item.get(
-        "source",
-        "HMT",
-    )
-
-    buy_url = item.get(
-        "buy_url",
-        "",
-    )
-
-    image_url = item.get(
-        "image_url",
-        "",
-    )
-
-    if alert_type == "RESTOCK":
-        heading = "🚨 HMT WATCH RESTOCK"
-
-    elif alert_type == "QUANTITY":
-        heading = "📦 HMT STOCK INCREASE"
-
-    elif alert_type == "NEW":
-        heading = "🆕 NEW HMT WATCH"
-
-    else:
-        heading = "🚨 HMT STOCK ALERT"
-
-    if quantity is None:
-        quantity_text = "Not disclosed"
-    else:
-        quantity_text = str(quantity)
-
-    detected = datetime.now().strftime(
-        "%d %b %Y, %I:%M %p"
+    quantity_text = (
+        str(item["quantity"])
+        if item.get("quantity") is not None
+        else "Not exposed by website"
     )
 
     caption = (
-        f"{heading}\n\n"
-        f"⌚ <b>Product:</b> {title}\n"
-        f"💰 <b>Price:</b> ₹{price}\n"
-        f"🏷️ <b>Series:</b> "
-        f"{series_from_title(title)}\n"
-        f"📦 <b>Units in stock:</b> "
-        f"{quantity_text}\n"
-        f"🌐 <b>Source:</b> {source}\n"
-        f"🕒 <b>Detected:</b> {detected}\n"
-        f"🔗 <a href=\"{buy_url}\">Open product</a>"
+        f"🚨 <b>HMT STOCK ALERT</b>\n\n"
+        f"📦 <b>{item['title']}</b>\n"
+        f"🏷️ <b>Source:</b> {item['source']}\n"
+        f"💰 <b>Price:</b> ₹{item['price']}\n"
+        f"⌚ <b>Series:</b> {item['series']}\n"
+        f"📊 <b>Stock:</b> {quantity_text}\n"
+        f"🔔 <b>Event:</b> {alert_type}\n"
+        f"🕒 <b>Detected:</b> "
+        f"{datetime.now().strftime('%d %b %Y, %I:%M:%S %p')}\n\n"
+        f"🌐 <a href='{item['url']}'>Open Product</a>"
     )
 
-    # --------------------------------------------------------
-    # PHOTO
-    # --------------------------------------------------------
-
-    if image_url:
-
-        photo_url = (
-            f"https://api.telegram.org/"
-            f"bot{TELEGRAM_BOT_TOKEN}/sendPhoto"
-        )
-
-        payload = {
-            "chat_id": TELEGRAM_CHAT_ID,
-            "photo": image_url,
-            "caption": caption,
-            "parse_mode": "HTML",
-        }
-
-        try:
-
-            response = session.post(
-                photo_url,
-                data=payload,
-                timeout=20,
-            )
-
-            print(
-                "Telegram photo response:",
-                response.status_code,
-            )
-
-            if response.ok:
-                return True
-
-            print(
-                response.text
-            )
-
-        except Exception as e:
-
-            print(
-                "Telegram photo error:",
-                e,
-            )
-
-    # --------------------------------------------------------
-    # TEXT FALLBACK
-    # --------------------------------------------------------
-
-    message_url = (
+    api_url = (
         f"https://api.telegram.org/"
         f"bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     )
@@ -312,77 +264,60 @@ def send_telegram(item, alert_type):
     }
 
     try:
-
         response = session.post(
-            message_url,
+            api_url,
             data=payload,
-            timeout=20,
+            timeout=15,
         )
 
         print(
-            "Telegram message response:",
-            response.status_code,
+            f"Telegram response: "
+            f"{response.status_code} - {response.text[:300]}"
         )
 
-        if response.ok:
-            return True
-
-        print(
-            response.text
-        )
+        return response.ok
 
     except Exception as e:
+        print(f"Telegram error: {e}")
+        return False
 
-        print(
-            "Telegram message error:",
-            e,
+
+# ============================================================
+# STATE
+# ============================================================
+
+def load_state():
+    if not os.path.exists(STATE_FILE):
+        return {}
+
+    try:
+        with open(STATE_FILE, "r", encoding="utf-8") as f:
+            state = json.load(f)
+
+        if isinstance(state, dict):
+            return state
+
+    except Exception as e:
+        print(f"Could not load state: {e}")
+
+    return {}
+
+
+def save_state(state):
+    with open(STATE_FILE, "w", encoding="utf-8") as f:
+        json.dump(
+            state,
+            f,
+            indent=2,
+            ensure_ascii=False,
         )
-
-    return False
 
 
 # ============================================================
 # HMT STORE
-#
-# .store uses Next.js __NEXT_DATA__
 # ============================================================
 
-def find_store_products(obj, results):
-
-    if isinstance(obj, dict):
-
-        name = obj.get("name")
-
-        if (
-            isinstance(name, str)
-            and name.strip()
-            and (
-                "currentStock" in obj
-                or "primaryProductId" in obj
-                or "sellingPrice" in obj
-            )
-        ):
-            results.append(obj)
-
-        for value in obj.values():
-
-            find_store_products(
-                value,
-                results,
-            )
-
-    elif isinstance(obj, list):
-
-        for value in obj:
-
-            find_store_products(
-                value,
-                results,
-            )
-
-
-def scrape_store():
-
+def scrape_hmt_store():
     print("=" * 42)
     print("SCRAPING HMT STORE")
     print("=" * 42)
@@ -390,15 +325,14 @@ def scrape_store():
     products = {}
 
     try:
-
         response = session.get(
             HMT_STORE_URL,
             timeout=30,
         )
 
         print(
-            "HMT Store HTTP status:",
-            response.status_code,
+            f"HMT Store HTTP status: "
+            f"{response.status_code}"
         )
 
         if response.status_code != 200:
@@ -409,156 +343,145 @@ def scrape_store():
             "html.parser",
         )
 
-        next_script = soup.find(
-            "script",
-            id="__NEXT_DATA__",
+        # The HMT Store is not a normal Shopify page.
+        # Look for product-like records using multiple strategies.
+
+        candidates = []
+
+        # Product/article/card elements
+        candidates.extend(
+            soup.find_all(
+                [
+                    "article",
+                    "li",
+                    "div",
+                ]
+            )
         )
 
-        if not next_script:
+        seen_urls = set()
 
-            print(
-                "HMT Store __NEXT_DATA__ not found"
+        for element in candidates:
+            link = element.find(
+                "a",
+                href=True,
             )
 
-            return products
+            if not link:
+                continue
 
-        raw = (
-            next_script.string
-            or next_script.get_text()
-        )
+            href = link.get("href", "").strip()
 
-        data = json.loads(raw)
+            if not href:
+                continue
 
-        raw_products = []
-
-        find_store_products(
-            data,
-            raw_products,
-        )
-
-        print(
-            "HMT Store product records found:",
-            len(raw_products),
-        )
-
-        seen = set()
-
-        for product in raw_products:
-
-            title = clean_text(
-                product.get("name")
+            absolute_url = urljoin(
+                HMT_STORE_BASE,
+                href,
             )
+
+            parsed = urlparse(absolute_url)
+
+            # Only product-looking URLs
+            path_lower = parsed.path.lower()
+
+            if not any(
+                x in path_lower
+                for x in [
+                    "/product",
+                    "/products/",
+                    "/item",
+                ]
+            ):
+                continue
+
+            if absolute_url in seen_urls:
+                continue
+
+            seen_urls.add(absolute_url)
+
+            text = clean_text(
+                element.get_text(
+                    " ",
+                    strip=True,
+                )
+            )
+
+            if len(text) < 10:
+                continue
+
+            # Find likely title
+            title = ""
+
+            for tag in [
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "strong",
+                "p",
+            ]:
+                found = element.find(tag)
+
+                if found:
+                    candidate_title = clean_text(
+                        found.get_text(
+                            " ",
+                            strip=True,
+                        )
+                    )
+
+                    if (
+                        3
+                        <= len(candidate_title)
+                        <= 150
+                        and "₹" not in candidate_title
+                    ):
+                        title = candidate_title
+                        break
 
             if not title:
                 continue
 
-            if excluded(title):
+            if is_excluded(title):
                 continue
 
-            if product.get(
-                "deactivated"
-            ) is True:
-                continue
+            price = extract_price(text)
+            quantity = extract_quantity(text)
+            available = detect_availability(text)
 
-            product_code = (
-                product.get(
-                    "primaryProductId"
-                )
-                or product.get("sku")
-                or product.get("id")
-            )
+            image = extract_image(element)
 
-            if not product_code:
-                continue
-
-            product_id = (
-                "store:"
-                + str(product_code)
-            )
-
-            if product_id in seen:
-                continue
-
-            seen.add(product_id)
-
-            quantity = safe_int(
-                product.get(
-                    "currentStock"
-                )
-            )
-
-            available = (
-                quantity is not None
-                and quantity > 0
-            )
-
-            # Variant fallback
-            variants = product.get(
-                "variantsDimensions"
-            )
-
-            if isinstance(
-                variants,
-                list,
-            ):
-
-                for variant in variants:
-
-                    if (
-                        isinstance(
-                            variant,
-                            dict,
-                        )
-                        and variant.get(
-                            "inStock"
-                        ) is True
-                    ):
-                        available = True
-                        break
-
-            price = (
-                product.get(
-                    "sellingPrice"
-                )
-                or product.get("mrp")
-                or "N/A"
-            )
-
-            price_int = safe_int(price)
-
-            if price_int is not None:
-                price = str(price_int)
-
-            image_url = (
-                product.get(
-                    "productImageUrl"
-                )
-                or ""
+            product_id = make_product_id(
+                "HMT Store",
+                title,
+                absolute_url,
             )
 
             products[product_id] = {
                 "title": title,
                 "price": price,
+                "series": extract_series(title),
+                "image_url": image,
+                "url": absolute_url,
+                "source": "HMT Store",
                 "available": available,
                 "quantity": quantity,
-                "source": "HMT Store",
-                "series": series_from_title(
-                    title
-                ),
-                "image_url": image_url,
-                "buy_url": HMT_STORE_URL,
             }
 
         print(
-            "HMT Store usable products:",
-            len(products),
+            f"HMT Store candidate products: "
+            f"{len(seen_urls)}"
+        )
+
+        print(
+            f"HMT Store usable products: "
+            f"{len(products)}"
         )
 
     except Exception as e:
-
         print(
-            "HMT Store error:",
-            e,
+            f"HMT Store scraping error: {e}"
         )
 
     return products
@@ -566,613 +489,254 @@ def scrape_store():
 
 # ============================================================
 # HMT.IN
-#
-# Correct catalog:
-# https://www.hmtwatches.in/all_product
-#
-# Product pages:
-# /product_details?id=...
 # ============================================================
 
-def scrape_hmt_in():
+def get_hmt_in_product_urls():
+    """
+    HMT.in uses:
+        /all_product
 
-    print("=" * 42)
-    print("SCRAPING HMT.IN")
-    print("=" * 42)
+    Product detail pages use:
+        /product_details?id=...
 
-    products = {}
+    This is why looking for /products/ returns zero.
+    """
+
+    urls = set()
 
     try:
-
         response = session.get(
             HMT_IN_URL,
             timeout=30,
         )
 
         print(
-            "HMT.in HTTP status:",
-            response.status_code,
+            f"HMT.in HTTP status: "
+            f"{response.status_code}"
         )
 
         if response.status_code != 200:
-            return products
+            return urls
 
         soup = BeautifulSoup(
             response.text,
             "html.parser",
         )
 
-        # ----------------------------------------------------
-        # Find actual product-detail links
-        # ----------------------------------------------------
-
-        product_links = []
-
-        for a in soup.find_all(
+        for link in soup.find_all(
             "a",
             href=True,
         ):
+            href = link.get("href", "").strip()
 
-            href = a.get(
-                "href",
-                "",
-            ).strip()
-
-            if not href:
+            if "product_details" not in href.lower():
                 continue
 
-            href_lower = href.lower()
-
-            if (
-                "product_details" in href_lower
-                or "product_detail" in href_lower
-            ):
-
-                full_url = urljoin(
-                    HMT_IN_URL,
-                    href,
-                )
-
-                product_links.append(
-                    full_url
-                )
-
-        # ----------------------------------------------------
-        # Some pages may encode links differently.
-        # Search raw HTML as fallback.
-        # ----------------------------------------------------
-
-        raw_links = re.findall(
-            r'href=["\']([^"\']+)["\']',
-            response.text,
-            re.IGNORECASE,
-        )
-
-        for href in raw_links:
-
-            if (
-                "product_details"
-                in href.lower()
-            ):
-
-                full_url = urljoin(
-                    HMT_IN_URL,
-                    href,
-                )
-
-                product_links.append(
-                    full_url
-                )
-
-        product_links = list(
-            dict.fromkeys(
-                product_links
-            )
-        )
-
-        print(
-            "HMT.in product links found:",
-            len(product_links),
-        )
-
-        # ----------------------------------------------------
-        # If the catalog page exposes product cards but
-        # product links are hidden, parse the cards directly.
-        # ----------------------------------------------------
-
-        card_products = parse_hmt_in_cards(
-            soup
-        )
-
-        # ----------------------------------------------------
-        # First process direct product links.
-        # ----------------------------------------------------
-
-        for product_url in product_links:
-
-            item = scrape_hmt_in_product(
-                product_url
+            absolute_url = urljoin(
+                HMT_IN_BASE,
+                href,
             )
 
-            if not item:
-                continue
-
-            title = item["title"]
-
-            if excluded(title):
-                continue
-
-            product_id = item["product_id"]
-
-            products[
-                product_id
-            ] = item
-
-        # ----------------------------------------------------
-        # Add catalog cards that weren't picked up through
-        # detail links.
-        # ----------------------------------------------------
-
-        for product_id, item in card_products.items():
-
-            if product_id not in products:
-
-                products[
-                    product_id
-                ] = item
+            urls.add(absolute_url)
 
         print(
-            "HMT.in usable products:",
-            len(products),
+            f"HMT.in product links found: "
+            f"{len(urls)}"
         )
 
     except Exception as e:
-
         print(
-            "HMT.in error:",
-            e,
+            f"HMT.in URL discovery error: {e}"
         )
 
-    return products
+    return urls
 
 
-# ============================================================
-# HMT.IN PRODUCT PAGE
-# ============================================================
-
-def scrape_hmt_in_product(url):
-
-    try:
-
-        response = session.get(
-            url,
-            timeout=20,
-        )
-
-        if response.status_code != 200:
-            return None
-
-        soup = BeautifulSoup(
-            response.text,
-            "html.parser",
-        )
-
-        # ----------------------------------------------------
-        # TITLE
-        # ----------------------------------------------------
-
-        title = ""
-
-        h1 = soup.find("h1")
-
-        if h1:
-            title = clean_text(
-                h1.get_text(
-                    " ",
-                    strip=True,
-                )
-            )
-
-        if not title:
-
-            og_title = soup.find(
-                "meta",
-                property="og:title",
-            )
-
-            if og_title:
-                title = clean_text(
-                    og_title.get(
-                        "content",
-                        "",
-                    )
-                )
-
-        if not title:
-            return None
-
-        if excluded(title):
-            return None
-
-        # ----------------------------------------------------
-        # PRICE
-        # ----------------------------------------------------
-
-        price = "N/A"
-
-        price_patterns = [
-            r"₹\s*([\d,]+)",
-            r"Rs\.?\s*([\d,]+)",
-            r"RS\.?\s*([\d,]+)",
-            r"INR\s*([\d,]+)",
-        ]
-
-        page_text = soup.get_text(
-            " ",
-            strip=True,
-        )
-
-        for pattern in price_patterns:
-
-            match = re.search(
-                pattern,
-                page_text,
-                re.IGNORECASE,
-            )
-
-            if match:
-
-                price = (
-                    match.group(1)
-                    .replace(",", "")
-                )
-
-                break
-
-        # ----------------------------------------------------
-        # AVAILABILITY
-        # ----------------------------------------------------
-
-        lower_text = page_text.lower()
-
-        available = True
-
-        out_of_stock_phrases = [
-            "out of stock",
-            "sold out",
-            "currently unavailable",
-        ]
-
-        if any(
-            phrase in lower_text
-            for phrase in out_of_stock_phrases
-        ):
-            available = False
-
-        # ----------------------------------------------------
-        # JSON-LD AVAILABILITY
-        # ----------------------------------------------------
-
-        quantity = None
-
-        for script in soup.find_all(
-            "script",
-            type="application/ld+json",
-        ):
-
-            raw = (
-                script.string
-                or script.get_text()
-            )
-
-            if not raw:
-                continue
-
-            try:
-
-                data = json.loads(
-                    raw
-                )
-
-            except Exception:
-                continue
-
-            candidates = (
-                data
-                if isinstance(
-                    data,
-                    list,
-                )
-                else [data]
-            )
-
-            for obj in candidates:
-
-                if not isinstance(
-                    obj,
-                    dict,
-                ):
-                    continue
-
-                if obj.get(
-                    "@type"
-                ) != "Product":
-                    continue
-
-                offers = obj.get(
-                    "offers"
-                )
-
-                if isinstance(
-                    offers,
-                    dict,
-                ):
-
-                    availability = str(
-                        offers.get(
-                            "availability",
-                            "",
-                        )
-                    ).lower()
-
-                    if (
-                        "outofstock"
-                        in availability
-                    ):
-                        available = False
-
-                    elif (
-                        "instock"
-                        in availability
-                    ):
-                        available = True
-
-                break
-
-        # ----------------------------------------------------
-        # EXACT QUANTITY
-        #
-        # Only report it if the page explicitly exposes it.
-        # ----------------------------------------------------
-
-        quantity_patterns = [
-            r"only\s+(\d+)\s+left",
-            r"(\d+)\s+units?\s+left",
-            r"(\d+)\s+in\s+stock",
-            r"stock[:\s]+(\d+)",
-            r"quantity[:\s]+(\d+)",
-        ]
-
-        for pattern in quantity_patterns:
-
-            match = re.search(
-                pattern,
-                page_text,
-                re.IGNORECASE,
-            )
-
-            if match:
-
-                quantity = safe_int(
-                    match.group(1)
-                )
-
-                break
-
-        # ----------------------------------------------------
-        # IMAGE
-        # ----------------------------------------------------
-
-        image_url = ""
-
-        og_image = soup.find(
-            "meta",
-            property="og:image",
-        )
-
-        if og_image:
-
-            image_url = og_image.get(
-                "content",
-                "",
-            )
-
-        # ----------------------------------------------------
-        # STABLE ID
-        # ----------------------------------------------------
-
-        product_id = (
-            "in:"
-            + re.sub(
-                r"[^a-z0-9]+",
-                "_",
-                url.lower(),
-            ).strip("_")
-        )
-
-        return {
-            "product_id": product_id,
-            "title": title,
-            "price": price,
-            "available": available,
-            "quantity": quantity,
-            "source": "HMT.in",
-            "series": series_from_title(
-                title
-            ),
-            "image_url": image_url,
-            "buy_url": url,
-        }
-
-    except Exception as e:
-
-        print(
-            "Product page error:",
-            url,
-            e,
-        )
-
-        return None
-
-
-# ============================================================
-# HMT.IN CARD FALLBACK
-# ============================================================
-
-def parse_hmt_in_cards(soup):
+def scrape_hmt_in():
+    print("=" * 42)
+    print("SCRAPING HMT.IN")
+    print("=" * 42)
 
     products = {}
 
-    # Search all anchors that look like product-detail
-    # links and extract their surrounding card information.
+    product_urls = get_hmt_in_product_urls()
 
-    for a in soup.find_all(
-        "a",
-        href=True,
+    print(
+        f"HMT.in unique product URLs: "
+        f"{len(product_urls)}"
+    )
+
+    for index, url in enumerate(
+        product_urls,
+        start=1,
     ):
+        try:
+            response = session.get(
+                url,
+                timeout=20,
+            )
 
-        href = a.get(
-            "href",
-            "",
-        )
+            if response.status_code != 200:
+                continue
 
-        if (
-            "product_details"
-            not in href.lower()
-        ):
-            continue
+            soup = BeautifulSoup(
+                response.text,
+                "html.parser",
+            )
 
-        url = urljoin(
-            HMT_IN_URL,
-            href,
-        )
-
-        # Find nearest useful parent.
-        parent = a
-
-        for _ in range(5):
-
-            if parent.parent:
-                parent = parent.parent
-
-            text = clean_text(
-                parent.get_text(
+            page_text = clean_text(
+                soup.get_text(
                     " ",
                     strip=True,
                 )
             )
 
-            if len(text) > 20:
-                break
+            # ------------------------------------------------
+            # TITLE
+            # ------------------------------------------------
 
-        title = clean_text(
-            a.get_text(
-                " ",
-                strip=True,
-            )
-        )
+            title = ""
 
-        if not title:
+            # First try common headings
+            for tag in [
+                "h1",
+                "h2",
+                "h3",
+            ]:
+                elements = soup.find_all(tag)
 
-            title_element = parent.find(
-                [
-                    "h2",
-                    "h3",
-                    "h4",
-                    "strong",
-                    "span",
-                ]
-            )
-
-            if title_element:
-
-                title = clean_text(
-                    title_element.get_text(
-                        " ",
-                        strip=True,
+                for element in elements:
+                    candidate = clean_text(
+                        element.get_text(
+                            " ",
+                            strip=True,
+                        )
                     )
+
+                    if (
+                        candidate
+                        and len(candidate) >= 4
+                        and len(candidate) <= 150
+                        and "HMT" in candidate.upper()
+                    ):
+                        title = candidate
+                        break
+
+                if title:
+                    break
+
+            # Search meta title
+            if not title:
+                meta = soup.find(
+                    "meta",
+                    property="og:title",
                 )
 
-        if not title:
-            continue
+                if meta:
+                    title = clean_text(
+                        meta.get("content", "")
+                    )
 
-        if excluded(title):
-            continue
-
-        text_lower = (
-            parent.get_text(
-                " ",
-                strip=True,
-            ).lower()
-        )
-
-        available = (
-            "out of stock"
-            not in text_lower
-            and "sold out"
-            not in text_lower
-        )
-
-        price = "N/A"
-
-        match = re.search(
-            r"(?:₹|rs\.?|inr)\s*([\d,]+)",
-            text_lower,
-            re.IGNORECASE,
-        )
-
-        if match:
-
-            price = (
-                match.group(1)
-                .replace(",", "")
-            )
-
-        image_url = ""
-
-        img = parent.find(
-            "img"
-        )
-
-        if img:
-
-            image_url = (
-                img.get("src")
-                or img.get(
-                    "data-src"
+            # Search document title
+            if not title and soup.title:
+                title = clean_text(
+                    soup.title.get_text()
                 )
-                or ""
+
+            if not title:
+                continue
+
+            # Clean common suffixes
+            title = re.sub(
+                r"\s*\|\s*HMT.*$",
+                "",
+                title,
+                flags=re.IGNORECASE,
             )
 
-            image_url = urljoin(
+            title = clean_text(title)
+
+            if len(title) < 4:
+                continue
+
+            # ------------------------------------------------
+            # EXCLUDE GALAXY / INOX
+            # ------------------------------------------------
+
+            if is_excluded(title):
+                continue
+
+            # ------------------------------------------------
+            # PRICE
+            # ------------------------------------------------
+
+            price = extract_price(page_text)
+
+            # ------------------------------------------------
+            # STOCK
+            # ------------------------------------------------
+
+            quantity = extract_quantity(page_text)
+
+            available = detect_availability(
+                page_text
+            )
+
+            # ------------------------------------------------
+            # IMAGE
+            # ------------------------------------------------
+
+            image = ""
+
+            og_image = soup.find(
+                "meta",
+                property="og:image",
+            )
+
+            if og_image:
+                image = urljoin(
+                    HMT_IN_BASE,
+                    og_image.get(
+                        "content",
+                        "",
+                    ),
+                )
+
+            if not image:
+                image = extract_image(soup)
+
+            # ------------------------------------------------
+            # SAVE
+            # ------------------------------------------------
+
+            product_id = make_product_id(
+                "HMT.in",
+                title,
                 url,
-                image_url,
             )
 
-        product_id = (
-            "in:"
-            + re.sub(
-                r"[^a-z0-9]+",
-                "_",
-                url.lower(),
-            ).strip("_")
-        )
+            products[product_id] = {
+                "title": title,
+                "price": price,
+                "series": extract_series(title),
+                "image_url": image,
+                "url": url,
+                "source": "HMT.in",
+                "available": available,
+                "quantity": quantity,
+            }
 
-        products[
-            product_id
-        ] = {
-            "product_id": product_id,
-            "title": title,
-            "price": price,
-            "available": available,
-            "quantity": None,
-            "source": "HMT.in",
-            "series": series_from_title(
-                title
-            ),
-            "image_url": image_url,
-            "buy_url": url,
-        }
+        except Exception as e:
+            print(
+                f"HMT.in product error "
+                f"{index}/{len(product_urls)}: "
+                f"{e}"
+            )
+
+    print(
+        f"HMT.in usable products: "
+        f"{len(products)}"
+    )
 
     return products
 
@@ -1189,23 +753,13 @@ def main():
 
     previous_state = load_state()
 
-    # --------------------------------------------------------
-    # SCRAPE BOTH OFFICIAL SITES
-    # --------------------------------------------------------
+    store_products = scrape_hmt_store()
+    hmt_products = scrape_hmt_in()
 
-    store_products = scrape_store()
+    current_products = {}
 
-    hmt_in_products = scrape_hmt_in()
-
-    current_catalog = {}
-
-    current_catalog.update(
-        store_products
-    )
-
-    current_catalog.update(
-        hmt_in_products
-    )
+    current_products.update(store_products)
+    current_products.update(hmt_products)
 
     print()
     print("=" * 42)
@@ -1213,40 +767,46 @@ def main():
     print("=" * 42)
 
     print(
-        "HMT Store:",
-        len(store_products),
+        f"HMT Store: {len(store_products)}"
     )
 
     print(
-        "HMT.in:   ",
-        len(hmt_in_products),
+        f"HMT.in:    {len(hmt_products)}"
     )
 
     print(
-        "TOTAL:    ",
-        len(current_catalog),
+        f"TOTAL:     {len(current_products)}"
     )
 
     # --------------------------------------------------------
-    # SAFETY CHECK
+    # SAFETY
     # --------------------------------------------------------
 
-    if len(current_catalog) == 0:
-
+    if len(current_products) == 0:
         print()
         print(
             "WARNING: ZERO PRODUCTS FOUND."
         )
-
         print(
-            "Stock state will NOT be overwritten."
+            "Existing stock_state.json "
+            "will NOT be overwritten."
         )
+        return
 
+    # If one website suddenly disappears, don't erase
+    # everything from the previous run.
+    if (
+        len(store_products) == 0
+        and len(hmt_products) == 0
+    ):
+        print(
+            "WARNING: No products from either site."
+        )
         return
 
     print()
     print(
-        f"Processing {len(current_catalog)} products..."
+        f"Processing {len(current_products)} products..."
     )
 
     updated_state = {}
@@ -1255,27 +815,7 @@ def main():
     quantity_changes = 0
     new_products = 0
 
-    # --------------------------------------------------------
-    # PROCESS PRODUCTS
-    # --------------------------------------------------------
-
-    for product_id, item in current_catalog.items():
-
-        title = item.get(
-            "title",
-            "Unknown",
-        )
-
-        current_available = bool(
-            item.get(
-                "available",
-                False,
-            )
-        )
-
-        current_quantity = item.get(
-            "quantity"
-        )
+    for product_id, item in current_products.items():
 
         previous = previous_state.get(
             product_id
@@ -1288,21 +828,34 @@ def main():
         if previous is None:
 
             print(
-                "BASELINE:",
-                title[:40],
-                f"[{item.get('source')}]",
+                f"BASELINE: "
+                f"{item['title']} "
+                f"[{item['source']}]"
             )
+
+            new_products += 1
 
         else:
 
-            previous_available = bool(
+            was_available = bool(
                 previous.get(
                     "available",
                     False,
                 )
             )
 
-            previous_quantity = previous.get(
+            is_available = bool(
+                item.get(
+                    "available",
+                    False,
+                )
+            )
+
+            old_quantity = previous.get(
+                "quantity"
+            )
+
+            new_quantity = item.get(
                 "quantity"
             )
 
@@ -1311,17 +864,17 @@ def main():
             # ------------------------------------------------
 
             if (
-                current_available
-                and not previous_available
+                is_available
+                and not was_available
             ):
 
                 print(
-                    "RESTOCK:",
-                    title,
-                    f"[{item.get('source')}]",
+                    f"RESTOCK DETECTED: "
+                    f"{item['title']} "
+                    f"[{item['source']}]"
                 )
 
-                if send_telegram(
+                if send_telegram_alert(
                     item,
                     "RESTOCK",
                 ):
@@ -1332,60 +885,39 @@ def main():
             # ------------------------------------------------
 
             elif (
-                current_available
-                and current_quantity is not None
-                and previous_quantity is not None
-                and current_quantity
-                > previous_quantity
+                old_quantity is not None
+                and new_quantity is not None
+                and new_quantity > old_quantity
             ):
 
                 print(
-                    "QUANTITY INCREASE:",
-                    title,
-                    f"{previous_quantity} -> "
-                    f"{current_quantity}",
+                    f"QUANTITY INCREASE: "
+                    f"{item['title']} "
+                    f"{old_quantity} -> "
+                    f"{new_quantity}"
                 )
 
-                if send_telegram(
+                if send_telegram_alert(
                     item,
-                    "QUANTITY",
+                    "STOCK INCREASE",
                 ):
                     quantity_changes += 1
 
-        # ----------------------------------------------------
-        # SAVE CURRENT STATE
-        # ----------------------------------------------------
-
-        updated_state[
-            product_id
-        ] = {
-            "title": title,
-            "price": item.get(
-                "price"
-            ),
-            "available": current_available,
-            "quantity": current_quantity,
-            "source": item.get(
-                "source"
-            ),
-            "image_url": item.get(
-                "image_url"
-            ),
-            "buy_url": item.get(
-                "buy_url"
-            ),
-            "series": item.get(
-                "series"
-            ),
+        updated_state[product_id] = {
+            "title": item["title"],
+            "price": item["price"],
+            "series": item["series"],
+            "source": item["source"],
+            "url": item["url"],
+            "available": item["available"],
+            "quantity": item["quantity"],
         }
 
     # --------------------------------------------------------
     # SAVE
     # --------------------------------------------------------
 
-    save_state(
-        updated_state
-    )
+    save_state(updated_state)
 
     print()
     print(
@@ -1399,23 +931,23 @@ def main():
     print("=" * 60)
 
     print(
-        "Products monitored:",
-        len(updated_state),
+        f"Products monitored: "
+        f"{len(current_products)}"
     )
 
     print(
-        "Restocks detected:",
-        restocks,
+        f"Restocks detected: "
+        f"{restocks}"
     )
 
     print(
-        "Quantity changes:",
-        quantity_changes,
+        f"Quantity changes: "
+        f"{quantity_changes}"
     )
 
     print(
-        "New products:",
-        new_products,
+        f"New products: "
+        f"{new_products}"
     )
 
     print("=" * 60)
