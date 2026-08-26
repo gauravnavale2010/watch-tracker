@@ -1,82 +1,162 @@
 {
-  "HMT Store|hmt chronograph fgss 12|8552.0": {
-    "name": "HMT Chronograph FGSS 12",
-    "url": "",
-    "price": 8552.0,
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6ImZ3V29PR3pLWXBZekQ0MHEyL0NUVVE9PSIsInZhbHVlIjoiY3VJM3Q3NVRDWGpyZGk2Y3NRSHJxdz09IiwibWFjIjoiMjZhMjUyNDZiNDk5ZmI2ZDUyMzJlYjE3YTE5NDJmNzdjYTIyYmZlYzliMmM3MmM1ZDRmYjUwZjJjNjNkMWNiOSIsInRhZyI6IiJ9": {
+    "name": "HMT Pace UGSL 101 ..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6ImZ3V29PR3pLWXBZekQ0MHEyL0NUVVE9PSIsInZhbHVlIjoiY3VJM3Q3NVRDWGpyZGk2Y3NRSHJxdz09IiwibWFjIjoiMjZhMjUyNDZiNDk5ZmI2ZDUyMzJlYjE3YTE5NDJmNzdjYTIyYmZlYzliMmM3MmM1ZDRmYjUwZjJjNjNkMWNiOSIsInRhZyI6IiJ9",
+    "price": 2200.0,
     "stock": null,
     "quantity": null,
-    "source": "HMT Store"
+    "source": "HMT.in"
   },
-  "HMT Store|hmt elegance eggg 56|3104.0": {
-    "name": "HMT Elegance EGGG 56",
-    "url": "",
-    "price": 3104.0,
-    "stock": null,
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Im9jUU00MlpjQ2J6MGk2aW5sck0vSWc9PSIsInZhbHVlIjoiUHF1M2xvdmJvQXhlc051RXNrMSsyZz09IiwibWFjIjoiYmMyMzE3NzE3MzcxM2ZiNTNlMGRlOTczMWU1NTIyZTQ2NDI0NWJiOGVlNDI3NTM0MThmNDY5OWFlMjBkZmQzZCIsInRhZyI6IiJ9": {
+    "name": "HMT Inox Gold ILSS..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Im9jUU00MlpjQ2J6MGk2aW5sck0vSWc9PSIsInZhbHVlIjoiUHF1M2xvdmJvQXhlc051RXNrMSsyZz09IiwibWFjIjoiYmMyMzE3NzE3MzcxM2ZiNTNlMGRlOTczMWU1NTIyZTQ2NDI0NWJiOGVlNDI3NTM0MThmNDY5OWFlMjBkZmQzZCIsInRhZyI6IiJ9",
+    "price": 2566.0,
+    "stock": false,
     "quantity": null,
-    "source": "HMT Store"
+    "source": "HMT.in"
   },
-  "HMT Store|hmt galaxy cg2l01 ls|1464.0": {
-    "name": "HMT Galaxy CG2L01 LS",
-    "url": "",
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6ImNsbk1zYjFhU0pDSnRVYWtycVJsRkE9PSIsInZhbHVlIjoiWDd2bERIU1RNUUEzYWFhdjhSTVQydz09IiwibWFjIjoiMzUzNjkzMjIyNGY5Mjk4NTcwMTc5YzAxY2ZkYWU3MmYwNThkNDlkZDkwNWU3NTZiMjRkYTllZTEzMDViNjg3YSIsInRhZyI6IiJ9": {
+    "name": "HMT Galaxy CG2L01 ..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6ImNsbk1zYjFhU0pDSnRVYWtycVJsRkE9PSIsInZhbHVlIjoiWDd2bERIU1RNUUEzYWFhdjhSTVQydz09IiwibWFjIjoiMzUzNjkzMjIyNGY5Mjk4NTcwMTc5YzAxY2ZkYWU3MmYwNThkNDlkZDkwNWU3NTZiMjRkYTllZTEzMDViNjg3YSIsInRhZyI6IiJ9",
     "price": 1464.0,
+    "stock": false,
+    "quantity": null,
+    "source": "HMT.in"
+  },
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6ImlaWEJSWDd0b1FObjZrNWZzbWVMQmc9PSIsInZhbHVlIjoiY1hKMi9lMTEyUHhyTGcxRnhpZlFUZz09IiwibWFjIjoiM2FhN2RhOGQzYjA1YTRlMmI0ZTBkNDI0OGQ3Yjg3ZDFiNWFkYWZjODE3ZGQ4NTVmZTk1NzlmMWQ2ZTMxMGY4YyIsInRhZyI6IiJ9": {
+    "name": "HMT INOX IXGL 11 I..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6ImlaWEJSWDd0b1FObjZrNWZzbWVMQmc9PSIsInZhbHVlIjoiY1hKMi9lMTEyUHhyTGcxRnhpZlFUZz09IiwibWFjIjoiM2FhN2RhOGQzYjA1YTRlMmI0ZTBkNDI0OGQ3Yjg3ZDFiNWFkYWZjODE3ZGQ4NTVmZTk1NzlmMWQ2ZTMxMGY4YyIsInRhZyI6IiJ9",
+    "price": 2594.0,
     "stock": null,
     "quantity": null,
-    "source": "HMT Store"
+    "source": "HMT.in"
   },
-  "HMT Store|hmt galaxy cgs1g01 arabic white-ss|1564.0": {
-    "name": "HMT Galaxy CGS1G01 Arabic White-SS",
-    "url": "",
-    "price": 1564.0,
-    "stock": null,
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjJVdllyVG9aaFkxZ21SZzBEc043R2c9PSIsInZhbHVlIjoiWHVQWGVocG9tcEExWEROaGZ6OUlQdz09IiwibWFjIjoiN2NmNmNjMzExMjExZTUzMGM0ZGU3MDc0Mzk3N2IxY2M4YjJmNWIxZTZkNzgyNDk1OTdlYTUyYjExMTJjNDUxMCIsInRhZyI6IiJ9": {
+    "name": "HMT Pace UGBKBK 10..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjJVdllyVG9aaFkxZ21SZzBEc043R2c9PSIsInZhbHVlIjoiWHVQWGVocG9tcEExWEROaGZ6OUlQdz09IiwibWFjIjoiN2NmNmNjMzExMjExZTUzMGM0ZGU3MDc0Mzk3N2IxY2M4YjJmNWIxZTZkNzgyNDk1OTdlYTUyYjExMTJjNDUxMCIsInRhZyI6IiJ9",
+    "price": 2650.0,
+    "stock": false,
     "quantity": null,
-    "source": "HMT Store"
+    "source": "HMT.in"
   },
-  "HMT Store|hmt janata automatic white|14750.0": {
-    "name": "HMT Janata Automatic White",
-    "url": "",
-    "price": 14750.0,
-    "stock": null,
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjdTWmhiNWpjbW96MHN1Zk5vdnpkREE9PSIsInZhbHVlIjoiYm1RWHI0YVllM1RqcTM5emJpaWl5Zz09IiwibWFjIjoiYWIyMTZjM2VlNTMyODI0OGUzOTcyN2Q3YjIzMzlhZjliZTVlMjQwN2U5MDQzZGRkYWI4ZmMxZTgwYzY1MWQ0MSIsInRhZyI6IiJ9": {
+    "name": "HMT Pace UGSS 101 ..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjdTWmhiNWpjbW96MHN1Zk5vdnpkREE9PSIsInZhbHVlIjoiYm1RWHI0YVllM1RqcTM5emJpaWl5Zz09IiwibWFjIjoiYWIyMTZjM2VlNTMyODI0OGUzOTcyN2Q3YjIzMzlhZjliZTVlMjQwN2U5MDQzZGRkYWI4ZmMxZTgwYzY1MWQ0MSIsInRhZyI6IiJ9",
+    "price": 2250.0,
+    "stock": false,
     "quantity": null,
-    "source": "HMT Store"
+    "source": "HMT.in"
   },
-  "HMT Store|hmt plus jgsl 04|2325.0": {
-    "name": "HMT Plus JGSL 04",
-    "url": "",
-    "price": 2325.0,
-    "stock": null,
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6InVKUlloNFIzSmVZemgvQkJnSUIxL1E9PSIsInZhbHVlIjoiQW9RN2YyQ294OVhWeVV5QWZzWDNTZz09IiwibWFjIjoiOGY1ZjA2N2RiMDU0YTNlMmU5MGU5Mzk4MGVkNTI0YjljYjQ1MTE1M2FkMjg3NGUzMTg3ZjJhOTU5ZDhmZmEwNyIsInRhZyI6IiJ9": {
+    "name": "HMT Pace ULSS 102 ..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6InVKUlloNFIzSmVZemgvQkJnSUIxL1E9PSIsInZhbHVlIjoiQW9RN2YyQ294OVhWeVV5QWZzWDNTZz09IiwibWFjIjoiOGY1ZjA2N2RiMDU0YTNlMmU5MGU5Mzk4MGVkNTI0YjljYjQ1MTE1M2FkMjg3NGUzMTg3ZjJhOTU5ZDhmZmEwNyIsInRhZyI6IiJ9",
+    "price": 1950.0,
+    "stock": false,
     "quantity": null,
-    "source": "HMT Store"
+    "source": "HMT.in"
   },
-  "HMT Store|hmt plus jgsl 08 (arabic)|2300.0": {
-    "name": "HMT Plus JGSL 08 (Arabic)",
-    "url": "",
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjN1ellKa0dnUUNxWmRTS3ZsOWVkZmc9PSIsInZhbHVlIjoiNFhZM1djU28wYTJ1MUk5Wk9MSzVHUT09IiwibWFjIjoiMTEyYjAyN2FlMGQyZTU5NDk0MzkzMWE1Y2I3MWJkMWE4NzExNTI0YzlkODFkMWE3ZDAwZTg4ZjQzY2QyZWM3MyIsInRhZyI6IiJ9": {
+    "name": "HMT Pace ULBKBK 10..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjN1ellKa0dnUUNxWmRTS3ZsOWVkZmc9PSIsInZhbHVlIjoiNFhZM1djU28wYTJ1MUk5Wk9MSzVHUT09IiwibWFjIjoiMTEyYjAyN2FlMGQyZTU5NDk0MzkzMWE1Y2I3MWJkMWE4NzExNTI0YzlkODFkMWE3ZDAwZTg4ZjQzY2QyZWM3MyIsInRhZyI6IiJ9",
+    "price": 2450.0,
+    "stock": false,
+    "quantity": null,
+    "source": "HMT.in"
+  },
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ilhad0g2K2RxT2FyWlNhbVdyRVJEbWc9PSIsInZhbHVlIjoiZjBuclQrenNMbjYrYllhSVh2UWV5UT09IiwibWFjIjoiMjFiMjM3NDNmZjE1YmNlNjc2MjFlNTI2ODFmYTE1OThjN2UzYTQxZGViNjFlMDU0N2I0MWI0ZGM5ZGZmMjBkZiIsInRhZyI6IiJ9": {
+    "name": "HMT Pace ULSL 102 ..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ilhad0g2K2RxT2FyWlNhbVdyRVJEbWc9PSIsInZhbHVlIjoiZjBuclQrenNMbjYrYllhSVh2UWV5UT09IiwibWFjIjoiMjFiMjM3NDNmZjE1YmNlNjc2MjFlNTI2ODFmYTE1OThjN2UzYTQxZGViNjFlMDU0N2I0MWI0ZGM5ZGZmMjBkZiIsInRhZyI6IiJ9",
+    "price": 1900.0,
+    "stock": false,
+    "quantity": null,
+    "source": "HMT.in"
+  },
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6ImNTZ1Q4UUlJcU4rQmZxS0gyTVFKUWc9PSIsInZhbHVlIjoiZjFST3ZvZnY3Q0cxeGFGZ1RRZ0xDQT09IiwibWFjIjoiNmZjNzFkYzFmMWMxMTI4MGQ3NTZmOTUwZDI4MzAwYmQwOTM1NTAwZWZkODMxYzI0ZDk2MWYxNWZmZDA2MmYzZSIsInRhZyI6IiJ9": {
+    "name": "HMT Pace UGSL 102 ..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6ImNTZ1Q4UUlJcU4rQmZxS0gyTVFKUWc9PSIsInZhbHVlIjoiZjFST3ZvZnY3Q0cxeGFGZ1RRZ0xDQT09IiwibWFjIjoiNmZjNzFkYzFmMWMxMTI4MGQ3NTZmOTUwZDI4MzAwYmQwOTM1NTAwZWZkODMxYzI0ZDk2MWYxNWZmZDA2MmYzZSIsInRhZyI6IiJ9",
+    "price": 1950.0,
+    "stock": false,
+    "quantity": null,
+    "source": "HMT.in"
+  },
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjVYL0JPM25VaC9JZisxSnFxWVR6c2c9PSIsInZhbHVlIjoiZHZNTWxadU1nWUlBaHJhU1Z2Rmp1dz09IiwibWFjIjoiYTgxZDNhOTZiMDcyZWQ0Yzk4NGQyMTliYjMzMzkwNWVmM2FiZjA2ZTg2MDNmY2JkOTRmNDRhYmI0NmM1ZjA0MCIsInRhZyI6IiJ9": {
+    "name": "HMT Pace UGGL 102 ..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjVYL0JPM25VaC9JZisxSnFxWVR6c2c9PSIsInZhbHVlIjoiZHZNTWxadU1nWUlBaHJhU1Z2Rmp1dz09IiwibWFjIjoiYTgxZDNhOTZiMDcyZWQ0Yzk4NGQyMTliYjMzMzkwNWVmM2FiZjA2ZTg2MDNmY2JkOTRmNDRhYmI0NmM1ZjA0MCIsInRhZyI6IiJ9",
     "price": 2300.0,
-    "stock": null,
+    "stock": false,
     "quantity": null,
-    "source": "HMT Store"
+    "source": "HMT.in"
   },
-  "HMT Store|hmt plus jgss 02 (4 arabic)|2252.0": {
-    "name": "HMT Plus JGSS 02 (4 Arabic)",
-    "url": "",
-    "price": 2252.0,
-    "stock": null,
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjN2SEhuZ0tmS3dPUXpYeGdUOVN6NlE9PSIsInZhbHVlIjoieWRhNmdZOW5jSEFSTys1bXBaaTZuQT09IiwibWFjIjoiOWVjZmM3ZmE1NGFmMDU1MWZmOTI4ODk5MmZmNWU5MmY4Zjk5Yjg4MWVlOWUyZmQyYjQxYzY3ZjA0OWM1ZDc0YyIsInRhZyI6IiJ9": {
+    "name": "HMT Pace UGGG 102 ..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjN2SEhuZ0tmS3dPUXpYeGdUOVN6NlE9PSIsInZhbHVlIjoieWRhNmdZOW5jSEFSTys1bXBaaTZuQT09IiwibWFjIjoiOWVjZmM3ZmE1NGFmMDU1MWZmOTI4ODk5MmZmNWU5MmY4Zjk5Yjg4MWVlOWUyZmQyYjQxYzY3ZjA0OWM1ZDc0YyIsInRhZyI6IiJ9",
+    "price": 2425.0,
+    "stock": false,
     "quantity": null,
-    "source": "HMT Store"
+    "source": "HMT.in"
   },
-  "HMT Store|hmt plus jgss 05|1925.0": {
-    "name": "HMT Plus JGSS 05",
-    "url": "",
-    "price": 1925.0,
-    "stock": null,
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Imt4aEJXamdReGdsUC9wM3RGNVN1L0E9PSIsInZhbHVlIjoiaHcyUzV1SnJEcE5ndHoybm5PZUxMZz09IiwibWFjIjoiZmZlMzc1YTIxNDQyYTdlYzk0NDRlZjliNTgyZTZmNjBiZDU2MDdiMTE4ZmZkODA1YmIwYjIzNWRhZGVhMzUxMiIsInRhZyI6IiJ9": {
+    "name": "HMT Pace ULGL 102 ..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Imt4aEJXamdReGdsUC9wM3RGNVN1L0E9PSIsInZhbHVlIjoiaHcyUzV1SnJEcE5ndHoybm5PZUxMZz09IiwibWFjIjoiZmZlMzc1YTIxNDQyYTdlYzk0NDRlZjliNTgyZTZmNjBiZDU2MDdiMTE4ZmZkODA1YmIwYjIzNWRhZGVhMzUxMiIsInRhZyI6IiJ9",
+    "price": 2250.0,
+    "stock": false,
     "quantity": null,
-    "source": "HMT Store"
+    "source": "HMT.in"
   },
-  "HMT Store|hmt ravi quartz gp yellow|2675.0": {
-    "name": "HMT Ravi Quartz GP Yellow",
-    "url": "",
-    "price": 2675.0,
-    "stock": null,
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6InRsOXh4Z1JQL2RZWU5OaGhHdFhOSXc9PSIsInZhbHVlIjoiWDhpRE9XNUZISmdwSHFyMjdVa1pCQT09IiwibWFjIjoiODY5NTMyYTIzYjdjOTk5ZTZiZjJmOTVmMTgzNDg5ODk4Yjg2YTczMjA2OThhZWQ0YWIyY2QzNjlhZjU4ZWYwYiIsInRhZyI6IiJ9": {
+    "name": "HMT Pace ULGG 102 ..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6InRsOXh4Z1JQL2RZWU5OaGhHdFhOSXc9PSIsInZhbHVlIjoiWDhpRE9XNUZISmdwSHFyMjdVa1pCQT09IiwibWFjIjoiODY5NTMyYTIzYjdjOTk5ZTZiZjJmOTVmMTgzNDg5ODk4Yjg2YTczMjA2OThhZWQ0YWIyY2QzNjlhZjU4ZWYwYiIsInRhZyI6IiJ9",
+    "price": 2375.0,
+    "stock": false,
     "quantity": null,
-    "source": "HMT Store"
+    "source": "HMT.in"
+  },
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ik5CYThBWGwxM2taTWxORks0Sjc5V3c9PSIsInZhbHVlIjoiZ3J1dHZUUGJQMWIwaGwwMUJqa1lyQT09IiwibWFjIjoiZThlYzIyYTY2MjI0YjkzNjE1OGExMTRkMzY3MDA4YjFhNTA4MGQ0ZmI2MzNiNDljZTUzOWJmYzgyZDA1ZGRkNSIsInRhZyI6IiJ9": {
+    "name": "HMT Pace ULBKL 102..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ik5CYThBWGwxM2taTWxORks0Sjc5V3c9PSIsInZhbHVlIjoiZ3J1dHZUUGJQMWIwaGwwMUJqa1lyQT09IiwibWFjIjoiZThlYzIyYTY2MjI0YjkzNjE1OGExMTRkMzY3MDA4YjFhNTA4MGQ0ZmI2MzNiNDljZTUzOWJmYzgyZDA1ZGRkNSIsInRhZyI6IiJ9",
+    "price": 2400.0,
+    "stock": false,
+    "quantity": null,
+    "source": "HMT.in"
+  },
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6ImVFVm9JOXdnM1B3UHc5bnpkTnFyb1E9PSIsInZhbHVlIjoiRDVjTDlTVEJLWXNTZVFQQ0x6L3ZsQT09IiwibWFjIjoiN2MxNWU3YTc1YTdjNjU4MzNjMTM5YTY1ZGZkNzA5ZDRjNmU0MmFiNmQ1MzMzZWE3YWE2ZjMwMGFjOWY2NGFjYiIsInRhZyI6IiJ9": {
+    "name": "HMT Plus JGSS 02 B..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6ImVFVm9JOXdnM1B3UHc5bnpkTnFyb1E9PSIsInZhbHVlIjoiRDVjTDlTVEJLWXNTZVFQQ0x6L3ZsQT09IiwibWFjIjoiN2MxNWU3YTc1YTdjNjU4MzNjMTM5YTY1ZGZkNzA5ZDRjNmU0MmFiNmQ1MzMzZWE3YWE2ZjMwMGFjOWY2NGFjYiIsInRhZyI6IiJ9",
+    "price": 2250.0,
+    "stock": false,
+    "quantity": null,
+    "source": "HMT.in"
+  },
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ikt5RTBmUVQrRmVEK0l6emEzRDBnM2c9PSIsInZhbHVlIjoiWXY2SU5QRnFYcHFabmhHTkdyb0hrdz09IiwibWFjIjoiM2ExOWJhNGNlMzBkOTM2MTIxMDM1MWI5NzgxYWIzNTM4N2U3YWI3Y2JlMmJjZTgxMGFjNDdkMmM1NGZkNzg0ZiIsInRhZyI6IiJ9": {
+    "name": "HMT Plus JGSL 02 B..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6Ikt5RTBmUVQrRmVEK0l6emEzRDBnM2c9PSIsInZhbHVlIjoiWXY2SU5QRnFYcHFabmhHTkdyb0hrdz09IiwibWFjIjoiM2ExOWJhNGNlMzBkOTM2MTIxMDM1MWI5NzgxYWIzNTM4N2U3YWI3Y2JlMmJjZTgxMGFjNDdkMmM1NGZkNzg0ZiIsInRhZyI6IiJ9",
+    "price": 2200.0,
+    "stock": false,
+    "quantity": null,
+    "source": "HMT.in"
+  },
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6InBueTJ4TU9NOHcybDZmSzBURDBmOFE9PSIsInZhbHVlIjoia0F4bW9rTERaaVVzRjhFNmtLY0xOdz09IiwibWFjIjoiYzllMDQ3ZWMwZWEwMjk1ZmI5NGZhZWVhODNiNDM3NzRkMjBiZDJiYmRlNjExYzdhMmNkNDk3YWM0MjkxMDFjYiIsInRhZyI6IiJ9": {
+    "name": "HMT Pace UGBL 101 ..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6InBueTJ4TU9NOHcybDZmSzBURDBmOFE9PSIsInZhbHVlIjoia0F4bW9rTERaaVVzRjhFNmtLY0xOdz09IiwibWFjIjoiYzllMDQ3ZWMwZWEwMjk1ZmI5NGZhZWVhODNiNDM3NzRkMjBiZDJiYmRlNjExYzdhMmNkNDk3YWM0MjkxMDFjYiIsInRhZyI6IiJ9",
+    "price": 2575.0,
+    "stock": false,
+    "quantity": null,
+    "source": "HMT.in"
+  },
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IkM5RWFINm9adVpDK2RUUlRLU2pheFE9PSIsInZhbHVlIjoidjZGRitEUTJGWWZXOERqWnYvVC9Odz09IiwibWFjIjoiNmRhOTJjZmYwZWEzNmNlZWFiNGJjZmVkNTVhNWY0YzI5OGM4MTc3YzhjZWI0OWJlOWQwZmUyNDUyNDVkMzE3YyIsInRhZyI6IiJ9": {
+    "name": "HMT Vihaan XGSL 03..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IkM5RWFINm9adVpDK2RUUlRLU2pheFE9PSIsInZhbHVlIjoidjZGRitEUTJGWWZXOERqWnYvVC9Odz09IiwibWFjIjoiNmRhOTJjZmYwZWEzNmNlZWFiNGJjZmVkNTVhNWY0YzI5OGM4MTc3YzhjZWI0OWJlOWQwZmUyNDUyNDVkMzE3YyIsInRhZyI6IiJ9",
+    "price": 2800.0,
+    "stock": false,
+    "quantity": null,
+    "source": "HMT.in"
+  },
+  "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjYwUjRSa1hUdVhxKzZ1eVhRYVhvWXc9PSIsInZhbHVlIjoiMjMyME1md29oRjFLQlgvY0xtTXQ5UT09IiwibWFjIjoiZThkNmVjZDJlYzJkYWI4ZDhiNDQ1ZmI3M2YyNTk1MzkzMWI0YjBkMDRiNzk0NmJmYTQ1YmE0NzhkZmE5ZjBjZiIsInRhZyI6IiJ9": {
+    "name": "HMT Plus JGSL 02 (..",
+    "url": "https://www.hmtwatches.in/product_overview?id=eyJpdiI6IjYwUjRSa1hUdVhxKzZ1eVhRYVhvWXc9PSIsInZhbHVlIjoiMjMyME1md29oRjFLQlgvY0xtTXQ5UT09IiwibWFjIjoiZThkNmVjZDJlYzJkYWI4ZDhiNDQ1ZmI3M2YyNTk1MzkzMWI0YjBkMDRiNzk0NmJmYTQ1YmE0NzhkZmE5ZjBjZiIsInRhZyI6IiJ9",
+    "price": 2200.0,
+    "stock": false,
+    "quantity": null,
+    "source": "HMT.in"
   }
 }
